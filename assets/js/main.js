@@ -209,4 +209,31 @@
 
 		}
 
+	// Modal functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const modals = document.querySelectorAll('.modal');
+		const thumbnails = document.querySelectorAll('.thumbnail');
+		const modalImages = document.querySelectorAll('.modal-content');
+		const captions = document.querySelectorAll('[id^="caption"]');
+		const closeButtons = document.querySelectorAll('.close');
+
+		thumbnails.forEach((thumbnail, index) => {
+			thumbnail.addEventListener('click', function(event) {
+				event.preventDefault();
+				const modal = modals[index];
+				const modalImg = modalImages[index];
+				const captionText = captions[index];
+				modal.style.display = "block";
+				modalImg.src = this.querySelector('img').src;
+				captionText.innerHTML = this.querySelector('img').alt;
+			});
+		});
+
+		closeButtons.forEach((close, index) => {
+			close.addEventListener('click', function() {
+				modals[index].style.display = "none";
+			});
+		});
+	});
+
 })(jQuery);
