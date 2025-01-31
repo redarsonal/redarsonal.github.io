@@ -209,29 +209,26 @@
 
 		}
 
-	// Modal functionality
+	// Function to display code snippets
 	document.addEventListener('DOMContentLoaded', function() {
-		const modals = document.querySelectorAll('.modal');
-		const thumbnails = document.querySelectorAll('.thumbnail');
-		const modalImages = document.querySelectorAll('.modal-content');
-		const captions = document.querySelectorAll('[id^="caption"]');
-		const closeButtons = document.querySelectorAll('.close');
-
-		thumbnails.forEach((thumbnail, index) => {
-			thumbnail.addEventListener('click', function(event) {
-				event.preventDefault();
-				const modal = modals[index];
-				const modalImg = modalImages[index];
-				const captionText = captions[index];
-				modal.style.display = "block";
-				modalImg.src = this.querySelector('img').src;
-				captionText.innerHTML = this.querySelector('img').alt;
-			});
+		const codeBlocks = document.querySelectorAll('pre code');
+		codeBlocks.forEach((block) => {
+			hljs.highlightBlock(block);
 		});
 
-		closeButtons.forEach((close, index) => {
-			close.addEventListener('click', function() {
-				modals[index].style.display = "none";
+		// Toggle code snippet visibility
+		const toggles = document.querySelectorAll('.code-toggle');
+		toggles.forEach((toggle) => {
+			toggle.addEventListener('click', function() {
+				const codeSection = this.nextElementSibling;
+				const icon = this.querySelector('img');
+				if (codeSection.style.display === 'none' || codeSection.style.display === '') {
+					codeSection.style.display = 'block';
+					icon.style.transform = 'rotate(180deg)';
+				} else {
+					codeSection.style.display = 'none';
+					icon.style.transform = 'rotate(0deg)';
+				}
 			});
 		});
 	});

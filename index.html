@@ -11,6 +11,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 	</head>
 	<body class="is-preload">
 
@@ -51,9 +53,11 @@
 									This work showcases my skills in programming, game design, and systems. 
 									<br>
 									<br>
-									Projects that I have lost access to their original source code, as well as commentary
+									<!-- Projects that I have lost access to their original source code, as well as commentary
 									on my experiences in this field can be found within the <a href="#blog">Blog</a> section, so feel free to 
-									check that out as well!
+									check that out as well! -->
+									I will be adding a blog section soon, which covers some other projects I have worked on, as well as my
+									thoughts on other related technological topics, so stay tuned for that!
 								</p>
 								<section>
 									<div class="row">
@@ -75,7 +79,7 @@
 										</div>
 										<div class="col-12">
 											<figure>
-												<a href="#work3" class="image fit"><img src="PDthumbnail.png" alt=""></a>
+												<a href="#work3" class="image fit"><img src="images/PDthumbnail.png" alt=""></a>
 												<figcaption><strong><i>Procedurally Generated Dungeon</i></strong></figcaption>
 												<figcaption>What happens when you try to design a playable level using
 													entirely procedurally generated layouts?
@@ -212,16 +216,277 @@
 									essential to get this task done in time, and I am grateful for their help.
 									<br>
 									<br>
-									<div class="gallery">
-										<a href="#pic06" class="thumbnail"><img src="images/refractionEditor1.png" alt="Sample editor, displaying simple editor tools."></a>
-										<a href="#pic07" class="thumbnail"><img src="images/refractionEditor2.png" alt="Sample editor, displaying simple editor tools."></a>
-										<a href="#pic08" class="thumbnail"><img src="images/refractionLevelLoading1.png" alt="Sample editor level loading and unloading."></a>
-										<a href="#pic09" class="thumbnail"><img src="images/refractionLevelLoading2.png" alt="Sample editor level loading and unloading."></a>
-										<a href="#pic010" class="thumbnail"><img src="images/refractionEntity1.png" alt="Sample editor for adding entities."></a>
-										<a href="#pic011" class="thumbnail"><img src="images/refractionEntity2.png" alt="Sample editor for adding entities."></a>
-									</div>
-									<br>
-									<br>
+																	<!-- Code Snippets Section -->
+								<section>
+									<h3 class="code-toggle">
+										Code Snippets: Entity Creation in Editor
+										<img src="images/DropDown.png" alt="Dropdown Icon">
+									</h3>
+									<pre><code class="language-cpp">
+int LevelCreatorScene::CreateCircleEntity()
+{
+	int circles_existing = 0;
+	std::string number = "./Data/GameObjects/Circle";
+	std::string filename = "./Data/GameObjects/Circle.json";
+
+	Entity* temp = FileIO::GetInstance()->ReadEntity(filename);
+
+	temp->addKey = "Circle";
+
+	temp->key = "Circle" + std::to_string(circleCount);
+	tempEntities.push_back(temp);
+	++circleCount;
+	return 0;
+}
+
+int LevelCreatorScene::CreateDoorEntity()
+{
+	int door_existing = 0;
+	std::string number = "./Data/GameObjects/Door";
+	std::string filename = "./Data/GameObjects/Door.json";
+
+	Entity* temp = FileIO::GetInstance()->ReadEntity(filename);
+
+	temp->addKey = "Door"; 
+
+	temp->key = "Door" + std::to_string(doorCount);
+
+	tempEntities.push_back(temp);
+	++doorCount;
+	return 0;
+}
+
+int LevelCreatorScene::CreateMirrorEntity(MirrorData mirror)
+{
+	int door_existing = 0;
+
+	UNREFERENCED_PARAMETER(door_existing);
+
+	std::string number = "./Data/GameObjects/Mirror";
+
+	std::string filename;
+	switch (mirror.spriteDirection) {
+	case 1: filename = "./Data/GameObjects/MirrorTopLeft.json"; break;
+	case 2: filename = "./Data/GameObjects/MirrorTopRight.json"; break;
+	case 3: filename = "./Data/GameObjects/MirrorBottomLeft.json"; break;
+	case 4: filename = "./Data/GameObjects/MirrorBottomRight.json"; break;
+	default: return 0;
+	}
+
+	//classic naming conventions
+	Entity* temp = FileIO::GetInstance()->ReadEntity(filename);
+	temp->GetComponent<BehaviorMirror>()->SetReflection(mirror.direction);
+
+	temp->addKey = "Mirror"; // this is for the map holding functions and gives access to function for circle
+
+	temp->key = "Mirror" + std::to_string(mirrorCount);
+
+	tempEntities.push_back(temp);
+	++mirrorCount;
+	return 0;
+}
+
+int LevelCreatorScene::CreateEmitterEntity(EmitterData emit)
+{
+	std::string number = "./Data/GameObjects/Emitter";
+	std::string filename = "./Data/GameObjects/tempEmitter.json";
+
+	Entity* temp = FileIO::GetInstance()->ReadEntity(filename);
+
+	switch (emit.spriteDirection) {
+	case 1:
+	{
+		BehaviorEmitter* mine = temp->GetComponent<BehaviorEmitter>();
+		mine->SetDirection({ 0.0f, -1.0f });
+		mine->SetPosition(*temp->GetComponent<Transform>()->GetTranslation());
+		break;
+	}
+	case 2:
+	{
+		BehaviorEmitter* mine = temp->GetComponent<BehaviorEmitter>();
+		mine->SetPosition(*temp->GetComponent<Transform>()->GetTranslation());
+		mine->SetDirection({ 0.0f, 1.0f });
+		break;
+	}
+	case 3:
+	{
+		BehaviorEmitter* mine = temp->GetComponent<BehaviorEmitter>();
+		mine->SetDirection({ 1.0f, 0.0f });
+		mine->SetPosition(*temp->GetComponent<Transform>()->GetTranslation());
+		break;
+	}
+	case 4:
+	{
+		BehaviorEmitter* mine = temp->GetComponent<BehaviorEmitter>();
+		mine->SetDirection({ -1.0f, 0.0f });
+		mine->SetPosition(*temp->GetComponent<Transform>()->GetTranslation());
+		break;
+	}
+	default: return 0;
+	}
+	temp->addKey = "Emitter"; // this is for the map holding functions and gives access to function for circle
+
+	temp->key = "Emitter" + std::to_string(emitterCount);
+
+	tempEntities.push_back(temp);
+	++emitterCount;
+	return 0;
+}
+									</code></pre>
+								</section>
+								<!-- New Code Snippets Section -->
+								<section>
+									<h3 class="code-toggle">
+										Code Snippets: Scene Settings
+										<img src="images/DropDown.png" alt="Dropdown Icon">
+									</h3>
+									<pre><code class="language-cpp">
+ImGui::Text("Scene Settings");
+ImGui::Text("./Data/Scenes/''LevelNameHere''");
+if (ImGui::TreeNode("Export:"))
+{
+	ImGui::Text("TileMapOnly");
+	ImGui::InputText(".json", myTextBuffer, sizeof(myTextBuffer));
+	if (ImGui::Button("ExportTileMap"))
+	{
+		std::string exportFileName = std::string(myTextBuffer);
+		if (exportFileName.empty())
+		{
+			ImGui::OpenPopup("EmptyExportFileNamePopup");
+		}
+		else if (!IsFileNameValid(exportFileName))
+		{
+			ImGui::OpenPopup("InvalidExportFileNamePopup");
+		}
+		else
+		{
+			FileIO::GetInstance()->ExportTileMap(myTextBuffer);
+			ImGui::OpenPopup("SuccessfulExport");
+		}
+	}
+
+	if (ImGui::Button("ExportFullScene"))
+	{
+		std::string exportFileName = std::string(myTextBuffer);
+		if (exportFileName.empty())
+		{
+			ImGui::OpenPopup("EmptyExportFileNamePopup");
+		}
+		else if (!IsFileNameValid(exportFileName))
+		{
+			ImGui::OpenPopup("InvalidExportFileNamePopup");
+		}
+		else
+		{
+			ExportScene(myTextBuffer);
+			ImGui::OpenPopup("SuccessfulExport");
+		}
+	}
+
+	ImGuiManager::RenderOKPopup("SuccessfulExport", "Exported!");
+	ImGuiManager::RenderOKPopup("EmptyExportFileNamePopup", "Please provide a file name for export!");
+	ImGuiManager::RenderOKPopup("InvalidExportFileNamePopup", "Illegal characters in the tilemap name GOOBER!");
+
+	ImGui::TreePop();
+}
+
+if (ImGui::TreeNode("Import:"))
+{
+	static char filenameBuffer[256];
+	ImGui::InputText(".json", filenameBuffer, sizeof(filenameBuffer));
+
+	ImGui::Text("NOTE: this will reset the current level.");
+	{
+		if (ImGui::Button("Submit"))
+		{
+			std::string filename = "./Data/Scenes/" + std::string(filenameBuffer) + ".json";
+
+			if (std::string(filenameBuffer).empty())
+			{
+				ImGui::OpenPopup("EmptyImportFileNamePopup");
+			}
+			else if (!IsFileNameValid(filenameBuffer))
+			{
+				ImGui::OpenPopup("InvalidImportFileNamePopup");
+			}
+			else
+			{
+				std::ifstream file(filename);
+				sceneName = std::string(filenameBuffer);
+				if (file.is_open())
+				{
+					file.close();
+					Renderer::GetInstance()->CleanRenderer();
+					LevelBuilder::GetInstance()->LoadTileMap(filename);
+					if (EntityContainer::GetInstance()->CountEntities() > 0)
+					{
+						int size = EntityContainer::GetInstance()->CountEntities();
+						for (int i = 0; i < size; ++i)
+						{
+							if ((*EntityContainer::GetInstance())[i])
+							{
+								tempEntities.push_back((*EntityContainer::GetInstance())[i]);
+								tempEntities[i]->addKey = tempEntities[i]->GetRealName();
+								if (tempEntities[i]->GetRealName().compare("Player") == 0)
+								{
+									playerExists = true;
+								}
+							}
+						}
+					}
+					json counts = FileIO::GetInstance()->OpenJSON("./Data/Scenes/" + std::string(filenameBuffer) + "OBJECTS.json");
+
+					if (counts["Circle"].is_object())
+					{
+						circleCount = counts["Circle"]["count"];
+					}
+					if (counts["Door"].is_object())
+					{
+						doorCount = counts["Door"]["count"];
+					}
+					if (counts["Mirror"].is_object())
+					{
+						mirrorCount = counts["Mirror"]["count"];
+					}
+					if (counts["Emitter"].is_object())
+					{
+						emitterCount = counts["Emitter"]["count"];
+					}
+					if (counts["Receiver"].is_object())
+					{
+						ReceiverCount = counts["Receiver"]["count"];
+					}
+
+					if (!entityManager->InitializeProperties(filename + "OBJECTS.json"))
+					{
+						ImGui::OpenPopup("NoObjectsInScene");
+					}
+
+					ImGui::OpenPopup("SuccessfulImport");
+				}
+				else
+				{
+					ImGui::OpenPopup("FileNotFoundPopup");
+				}
+			}
+		}
+
+		ImGuiManager::RenderOKPopup("SuccessfulImport", "Successfully imported the scene!");
+
+		ImGuiManager::RenderOKPopup("NoObjectsInScene", "Objects do not exist in this scene.");
+
+		ImGuiManager::RenderOKPopup("EmptyImportFileNamePopup", "Please provide a file name for import!");
+
+		ImGuiManager::RenderOKPopup("InvalidImportFileNamePopup", "Please provide a valid file name without illegal characters for import!");
+
+		ImGuiManager::RenderOKPopup("InvalidImportFileNamePopup", "Please provide a valid file name without illegal characters for import!");
+
+		ImGuiManager::RenderOKPopup("FileNotFoundPopup", "File not found!");
+	}
+	ImGui::TreePop();
+}
+									</code></pre>
+								</section>
 									<h2>Final Touches And Lessons</h2>
 									<br> As time came to an end, I wrapped up the engine with some final touches to ensure everything was stable 
 									and performed as we expected. I aided the graphics programmer in creating the menus —— another hand-made visual
@@ -257,62 +522,6 @@
 									development and systems programming, and I carry the lessons with every project!
 
 								</p>
-								<!-- Modals -->
-								<div id="pic01" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img01">
-									<div id="caption01"></div>
-								</div>
-								<div id="pic02" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img02">
-									<div id="caption02"></div>
-								</div>
-								<div id="pic03" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img03">
-									<div id="caption03"></div>
-								</div>
-								<div id="pic04" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img04">
-									<div id="caption04"></div>
-								</div>
-								<div id="pic05" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img05">
-									<div id="caption05"></div>
-								</div>
-								<div id="pic06" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img06">
-									<div id="caption06"></div>
-								</div>
-								<div id="pic07" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img07">
-									<div id="caption07"></div>
-								</div>
-								<div id="pic08" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img08">
-									<div id="caption08"></div>
-								</div>
-								<div id="pic09" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img09">
-									<div id="caption09"></div>
-								</div>
-								<div id="pic010" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img010">
-									<div id="caption010"></div>
-								</div>
-								<div id="pic010" class="modal">
-									<span class="close">&times;</span>
-									<img class="modal-content" id="img010">
-									<div id="caption011"></div>
-								</div>
 							</article>
 
 						<!-- Work 3 -->
@@ -464,4 +673,5 @@
 			<script src="assets/js/main.js"></script>
 
 	</body>
+</html>	</body>
 </html>

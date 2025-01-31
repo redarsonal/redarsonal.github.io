@@ -2270,3 +2270,35 @@ input, select, textarea {
 	padding: 10px 0;
 	height: 150px;
 }
+
+/* Code Snippets */
+pre {
+	background: #f4f4f4;
+	padding: 1em;
+	overflow-x: auto;
+	border-radius: 5px;
+	display: none; 
+}
+
+code {
+	font-family: 'Source Code Pro', monospace;
+	font-size: 0.8em; 
+	line-height: 1.4em; 
+	color: #333;
+}
+
+.code-toggle {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	color: inherit; 
+	text-decoration: none; 
+}
+
+.code-toggle img {
+	margin-left: 0.1em;
+	margin-top: 0.1em;
+	transition: transform 0.3s ease;
+	width: 1.5em;
+	height: 1.5em;
+}
