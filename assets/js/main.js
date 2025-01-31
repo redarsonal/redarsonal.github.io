@@ -50,17 +50,6 @@
 
 			});
 
-	// Blog post links.
-		$('a[href^="#blog"]').on('click', function(event) {
-			var href = $(this).attr('href');
-			// Prevent default.
-				event.preventDefault();
-				event.stopPropagation();
-			// Change panels.
-				if (window.location.hash != href)
-					window.location.hash = href;
-		});
-
 	// Panels.
 
 		// Initialize.
