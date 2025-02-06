@@ -86,13 +86,13 @@
 												</figcaption>
 											</figure>
 										</div>
-										<div class="col-12">
+										<!-- <div class="col-12">
 											<figure>
 												<a href="#work4" class="image fit"><img src="images/pic04.jpg" alt=""></a>
 												<figcaption><strong><i>Elemental Gambit</i></strong></figcaption>
 												<figcaption>Flashy cards and even flashier action lists!</figcaption>
 											</figure>
-										</div>
+										</div> -->
 									</div>
 								</section>
 							</article>
@@ -114,7 +114,117 @@
 									<h2><strong><i>Moth 2: The Mothening</i></strong></h2>
 								</header>
 								<p>
-									
+									On an alien planet, moths grow to be 5x the size of the ones we find on earth. 
+									They are cute, cuddly, and worth quite the price. You set up base on this planet,
+									creating a greenhouse as your base of operations. Alone on the planet, you seek to
+									catch, breed, and sell moths all in an attempt to become a monopoly. 
+									<br>
+									It's hard to sell these guys with how cute they are though...
+									<br>
+									This was the core concept of a game my team and I are developing during our third 
+									and potentially fourth years at DigiPen. It's still currently in development, but
+									I would like to give a glimpse on what I'm working on. It's roughly 5-6 months into
+									development at this point, with most important features nearly fleshed out. 
+									I am the lead systems programmer, as well as a Technical Advocate. My job is to 
+									assign tasks, manage timelines, work with the producers and designers on implenting 
+									their ideas, and handle interdisciplinary communication. I also have a hand in designing
+									and programming most systems within the game. All of this was done in Unreal Engine 5, 
+									not only the first time I've used this engine, but also the first time I've used a 
+									commercial engine to this extent before. This was another massive learning process, 
+									but I feel as if this is one of my most personally successful projects yet. This 
+									project has had many ups and downs, and is not in its best shape right now, yet
+									I cannot be anything but proud of the work put in. 
+									<br>
+									<br>
+									<h2>The Rocky Beginning</h2>
+									Originally, this game was planned to be a sort of economy simulator experience.
+									Your main focus was to sell all the moths you catch for profit. So we knew from the 
+									beginning one of the largest and most important systems was going to be the market system.
+									I decided to take this monumental task on, knowing it would grant me the best chance at 
+									truly exploring systems programming. I had some experience previously that brought me interest,
+									but this would be the first time I was given such a large task. 
+									But before we could sell anything, we had to catch moths first. This was the first mechanic we 
+									implemented, followed by the breeding system, as we knew we also had to sell the different life
+									stages of the moths as well. 
+									<br>
+									This gave me the break I needed to set up how I wanted to manage things. I took time to figure out
+									what each programmer had skills in, how they wanted to communicate best, how we wanted to handle 
+									task management. These were needed, and since I had to wait to implement the market, this was 
+									the perfect time. The majority of this time was pretty cut-and-dry, only requiring iteration 
+									in terms of timeline management. By the time I had my affairs in order, I still couldn't start
+									on the market yet -- we had some new issues arise. Our source control was giving us more issues
+									than we knew what to do with, miscommunications inbetween our departments, and overall trial and 
+									error. 
+									<br>
+									<br>
+									<h2>The Market</h2>
+									It took several weeks of focus almost entirely on my role as the Technical Advocate before I could 
+									even begin programming. Once I had the opportunity however, I swooped in. I focused on keeping the 
+									prototype simple -- you put in a moth, you get money out. It was a set price for everything, with 
+									no real control, but it was a start! I allowed the designers to begin planning out how they wanted 
+									the system to go. After many spreedsheets and discussions, we had several things we wanted the market 
+									to do -- and it was going to take a lot of effort. As the other programmers had their own personal
+									tasks and goals to work on, this was something I focused on nearly entirely on my own. 
+									<br>
+									To break it down simply, the overview of the cost price was calculated as follows, starting with 
+									the moment the player presses 'sell':
+									<ul>
+										<li>
+											We check if the moth is wild caught or bred first, as this impacts the inital base price,
+											prior to all modifications. Wild caught moths sell for less, relative to their base price.
+										</li>
+										<li>
+											We check the moth's quality -- the most impacting factor of their price. Each moth species
+											holds a unique graph on their selling prices in relation to their quality. Some moths are 
+											fairly linear, some are more logarithmic, and some are more like a sine. 
+											<ul>
+												<li>
+													We take the quality and the species into a special formula created to create the 
+													sell price based on the graph described above. Lots of finicky decimal values that
+													are used here, all of which change based on which species it is.
+												</li>
+												<li>
+													Additional fact: all of the assigning of the quality was done by me! It also
+													required a unique system, which calculated the percentage chance (based on multiple factors)
+													of what quality type a moth could spawn with, as well as the exact quality numerical value 
+													based on the distribution of that type!
+												</li>
+											</ul>
+										</li>
+										<li>
+											Similar to how a real life stock market works, every ten minutes different moth species have a new 
+											demand, increasing or decreasing their price. The chance of a price change, and how much it changes
+											is also relative to whether or not it was recently in demand. 
+										</li>
+									</ul>
+									<br>
+									Of course, as I said, this is a massive simplification of the calculations, but it gives a good idea on how 
+									it all works. This system relied heavily on other systems as well -- quality, a market cycle, species distribution,
+									etc. which made this process take approximately five months of work. It required a lot of creativity on how to 
+									best interconnect each of these systems and mechanics. As well as reinforce my skills in communication, debugging,
+									and overall systems programming. 
+									<br>
+									<br>
+									<h2>Continuing Development</h2>
+									<br>
+									By this point, we had some hefty systems in play already, with more to come. Our three main mechanics, catching, breeding, 
+									and selling, were pretty solid by this point. But we needed new things to keep it fresh and interesting -- a demand from the 
+									player to constantly be rotating their interest. We moved towards pinning and companion moths -- ways to get slight boosts
+									like jumping higher, or having a better chance at higher quality. You should also feed your moth friends, in order to keep 
+									them from running away. By exploring, you find all sorts of foods, as well as new moths! You can even give your moths some 
+									homes to keep them safe and cozy within the greenhouse.
+									<br>
+									But, unfortunately, as game development usually goes, many of these ideas didn't work out as planned.
+									<br>
+									As I continued to lead and program throughout this project, it wasn't long before we ran into more issues. Constant
+									changes in design leading to repeated refactoring and scrapping of mechanics, losing our art team due to miscommunications 
+									and poor management, teammate illnesses, source control difficulties, and more. This had lead production to slow to a crawl, 
+									posing a risk of failure with the project. Many of the systems I have worked on or outright created had been changed due to 
+									design choices. In truth, the outlook of continuing production may be bleak at this point. 
+									<br>
+									Nonetheless, I can say with absolute certainty that I am, and will always be, proud of the work I put in. I am proud of the
+									team's efforts work and the memories I made! I experienced, developed, and gained skills that I may not have in a different
+									situation. Whether or not development continues, I find myself constantly looking to build on everything I have learned thus far.
 								</p>
 							</article>
 
@@ -129,7 +239,7 @@
 									that can shift and redirect light beams. Soon, it dawns on you — manipulating 
 									these beams unlocks pathways, each puzzle leading closer to an escape.
 									<br>
-									This was the core concept of a game my team and I developed during our sophomore
+									This was the core concept of a game my team and I developed during our second
 									year of college at DigiPen Institute of Technology. The game was called Refraction,
 									a nod to the lighting mechanic that was the core of the game. The game spanned a 
 									full academic year, and the game was created entirely in a custom-made engine.
@@ -161,15 +271,178 @@
 									engines, this was an eye-opening experience.
 									<br>
 									<br>
-									<!-- Gallery -->
-								<div class="gallery">
-									<a href="#pic01" class="thumbnail"><img src="images/RefractionEngineArchitecture1.png" alt="Sample engine architecture, displaying safety techniques."></a>
-									<a href="#pic02" class="thumbnail"><img src="images/RefractionEngineArch2.png" alt="Sample engine architecture, displaying safety techniques."></a>
-									<a href="#pic03" class="thumbnail"><img src="images/RefractionInput.png" alt="Sample engine architecture, displaying custom SDL2 input mapping."></a>
-									<a href="#pic04" class="thumbnail"><img src="images/RefractionSceneSwitching.png" alt="Sample engine architecture, displaying scene switching."></a>
-								</div>
-									<br>
-									<br>
+									<!-- New Code Snippets Section -->
+									<section>
+										<h3 class="code-toggle">
+											Code Snippets: Simple Engine Implementation
+											<img src="images/DropDown.png" alt="Dropdown Icon">
+										</h3>
+										<pre><code class="language-cpp">
+// singleton instance
+Engine* Engine::instance = new Engine();
+
+Engine::EngineCode Engine::Start()
+{
+	// time instance
+	time = new Time();
+
+	AudioManager.LoadMusicFromJSON("./Data/music.json");
+	AudioManager.LoadSFXFromJSON("./Data/SFX.json");
+	// initalize all systems
+	for (int i = 0; i < systemCount; ++i)
+	{
+		try
+		{
+			systems[i]->Init();
+		}
+		catch (EngineCode engineFailure)
+		{
+			assert(engineFailure && "Engine failed to initialize. Location: Engine::Start(), Init()");
+			return engineFailure;
+		}
+	}
+
+	// main game loop
+	while (isRunning && !closeRequested)
+	{
+		EngineCode code = NothingBad;
+
+		try
+		{
+			code = Update();
+		}
+		catch (EngineCode updateFailure)
+		{
+			assert(updateFailure && "Engine failed during update. Location: Engine::Start(), Update()");
+			return updateFailure;
+		}
+		if (code == CloseWindow)
+			break;
+
+		try
+		{
+			code = Render();
+		}
+		catch (EngineCode renderFailure)
+		{
+			assert(renderFailure && "Engine failed during render. Location: Engine::Start(), Render()");
+			return renderFailure;
+		}
+		if (code == CloseWindow)
+			break;
+	}
+
+	// stop engine
+	return Stop();
+}
+
+Engine::EngineCode Engine::Stop()
+{
+	try
+	{
+		ShutDown();
+	}
+	catch (EngineCode shutdown)
+	{
+		assert(shutdown && "Engine failed to shut down. Location: Engine::Stop(), ShutDown()");
+		return shutdown;
+	}
+
+	return EngineExit;
+}
+
+void Engine::EngineAddSystem(BaseSystem* sys)
+{
+	systems[systemCount++] = sys;
+}
+
+bool Engine::Paused()
+{
+	return paused;
+}
+
+void Engine::SetPause(bool pause)
+{
+	paused = pause;
+}
+
+// get the singleton instance
+Engine* Engine::GetInstance()
+{
+	if (instance == nullptr)
+	{
+		instance = new Engine();
+	}
+	return instance;
+}
+
+Engine::Engine() : isRunning(true), systemCount(0), systems(), paused(false), time(NULL), closeRequested(false)
+{
+}
+
+Engine::~Engine()
+{
+	if (instance != NULL)
+	{
+		delete instance;
+	}
+}
+
+Engine::EngineCode Engine::Update()
+{
+	float dt = Time::Instance().Delta();
+
+	// update all systems
+	for (int i = 0; i < systemCount; ++i)
+	{
+		try {
+			systems[i]->Update(dt);
+		}
+		catch (EngineCode updateFailure)
+		{
+			switch (updateFailure)
+			{
+			case CloseWindow:
+				return updateFailure;
+			default:
+				assert(updateFailure && "Engine failed during system update. Location: Engine::Update()");
+				throw(updateFailure);
+			}
+		}
+	}
+	return NothingBad;
+}
+
+Engine::EngineCode Engine::Render()
+{
+	// render all systems
+	for (int i = 0; i < systemCount; ++i)
+	{
+		systems[i]->Render();
+	}
+	return NothingBad;
+}
+
+Engine::EngineCode Engine::ShutDown()
+{
+	// close all systems
+	for (int i = systemCount - 1; i >= 0; --i)
+	{
+		systems[i]->Close();
+	}
+
+	delete time;
+	AudioManager.Free();
+	return EngineExit;
+}
+
+// set flag to close game engine for whatever reasons you want
+void Engine::SetCloseRequest(bool close)
+{
+	closeRequested = close;
+}
+										</code></pre>
+									</section>
 									<h2>Optimizing Performance</h2>
 									<br>
 									One of the most significant challenges we faced was performance optimization. Our game 
@@ -530,7 +803,363 @@ if (ImGui::TreeNode("Import:"))
 									<h2>Procedurally Generated Dungeon</h2>
 								</header>
 								<p>
-									
+									What happens, as a game developer, when you attempt to create a level whose layout is completely procedurally generated?
+									This project set out to test this concept by designing a dungeon crawler where no two playthroughs were the same. 
+									The player would navigate a maze-like environment, defeat enemies, collect powerups, and kill the big-bad boss -- all while
+									traversing a dynamically generated level. 
+									<br>
+									<h2>Designing the Level</h2>
+									<br>
+									This was a student project for a level design class, where we were given a few basic assets, few scripts for enemy AI and camera 
+									logic, and a blank state to work with. The goal was not only to crete a level with a clear beginning, middle, and end but also
+									to ensure that it was still a fun and engaging experience despite being largely procedurally generated. Most other students opted
+									for a design where the player had to traverse from one side of the level to another, as it was much easier to create a difficulty
+									curve and clear player progression. But I wanted to challenge myself.
+									<br>
+									Instead of starting from one side to another, I wanted the player to start in the center of the level. The player could choose 
+									any of the four corners of the dungeon, each with a unique biome, distinct enemies, powerups, and a powerful mini-boss. This 
+									design added another layer of complexity: the level had to allow the player freedom throughout the entire level while still
+									maintaining overall structure, difficulty and progression. The procedural generation needed to make sure that each path was
+									navigable, balanced and engaging -- no matter what the procedural generation spat out. 
+									<br>
+									<br>
+									<h2>Corridor Generation</h2>
+									<br>
+									Generating the pathways was one of the most technically challenging aspects of the project. The corridors had to provide a clear
+									flow for the player to follow, allowing them to reach all areas while preserving the feel of well-designed level. Making randomized
+									paths would result in either excessive dead ends or a chaotic, nonsensical layout. I needed to strike a balance between randomness
+									and structure. So, I developed an algorithm that helped in path creation.
+									<br>
+									The corridor generation system started from the center room where the player spawns from. Each side of the room had the chance to 
+									have a corridor starting tile, which will begin the generation. The tile picks a random direction and starts creating a path. It
+									checks if another tile or the world border is in the way for each placement. If an obstacle was found, it would try another direction.
+									If that too fails, it backtracks and attempts another path using "branches" -- flags certain tiles have that allow the path to stem 
+									from, similar to a tree. This was somewhat inspired from other procedural generation algorithms such as cellular automata and 
+									recursive subdivision. The centeral spawn placements acts as a "seed", similar to what is used in cellular automata, making sure
+									that the paths organically grow from a specific point. The branching corridors are also similar to recursive subdivision, where 
+									the paths were segmented into smaller interconnected paths. I had to ensure none of the paths didn't overlap or connect oddly, 
+									such as touching parallel paths. This took extensive tweaking and testing to get right. I never did get it exactly the way I wanted,
+									but the challenge alone was an accomplishment.
+									<br>
+									<br>
+									<h3>Note: this is only a small portion of the code!</h3>
+									<strong>There is a lot of other checking and boring variable tweaking elsewhere, but we can at least see some basic construction
+										with these snippets.
+									</strong>
+									<br>
+									<br>
+
+								<section>
+									<h3 class="code-toggle">
+										Code Snippets: Corridor Generation
+										<img src="images/DropDown.png" alt="Dropdown Icon">
+									</h3>
+									<pre><code class="language-cpp">
+// Spawns a corridor
+void GenerateCorridor(int startX, int startY)
+{
+    // get a starting tile to start a corridor
+    SpawnTile(startX, startY);
+
+    // directions for movement (up, down, left, right)
+    List<Vector2Int> directions = new List<Vector2Int>
+    {
+        new Vector2Int(0, 1),  // up
+        new Vector2Int(0, -1), // down
+        new Vector2Int(-1, 0), // left
+        new Vector2Int(1, 0)   // right
+    };
+
+    // store x and y values
+    int currentX = startX;
+    int currentY = startY;
+
+    // store directions
+    Vector2Int currentDirection = directions[RNG.Next(directions.Count)];
+
+    // store branch points
+    Stack<Vector2Int> branchPoints = new Stack<Vector2Int>();
+
+    bool canPlaceTile = true;
+    int attempts = 0; // number of retries when finding a valid direction
+    int maxAttempts = 60; // maximum retries before stopping corridor generation
+
+    while (canPlaceTile)
+    {
+        if (IsValidTilePlacement(currentX, currentY))
+        {
+            TrySpawnPowerup(currentX, currentY);
+            TrySpawnEnemy(currentX, currentY);
+
+            // 80% chance to mark this tile as a branch point
+            if (RNG.Next(100) < 80)
+                branchPoints.Push(new Vector2Int(currentX, currentY));
+
+            // 0.5% chance to generate a trident-shaped branch
+            if (RNG.Next(100) < 0.5 && GenerateTridentBranch(ref currentX, ref currentY, ref currentDirection, branchPoints))
+                continue;
+
+            // 50% chance to generate a staircase pattern
+            if (RNG.Next(100) < 50 && GenerateStaircasePattern(ref currentX, ref currentY, currentDirection))
+                continue;
+
+            // 10% chance to generate a room
+            if (RNG.Next(100) < 10 && GetDistanceFromCenter(currentX, currentY) > 15)
+            {
+                int[] possibleSizes = { 3, 5, 7 };
+                PlaceRoom(currentX, currentY, possibleSizes[RNG.Next(possibleSizes.Length)], possibleSizes[RNG.Next(possibleSizes.Length)]);
+                continue;
+            }
+
+            // 20% chance to change direction
+            if (RNG.Next(100) < 20)
+            {
+                currentDirection = directions[RNG.Next(directions.Count)];
+
+                // 50% chance to generate a spiral
+                if (RNG.Next(100) < 50 && GenerateSpiralPattern(ref currentX, ref currentY, ref currentDirection))
+                    continue;
+            }
+
+            // move in a valid direction or backtrack if stuck
+            if (!TryChangeDirection(ref currentX, ref currentY, ref currentDirection, directions, branchPoints, ref attempts, maxAttempts))
+                canPlaceTile = false;
+        }
+        else if (!TryBacktrack(ref currentX, ref currentY, branchPoints, ref currentDirection, directions))
+        {
+            canPlaceTile = false;
+        }
+    }
+}
+									</code></pre>
+								</section>
+
+								<section>
+									<h3 class="code-toggle">
+										Code Snippets: Unique Corridor Generation
+										<img src="images/DropDown.png" alt="Dropdown Icon">
+									</h3>
+									<pre><code class="language-cpp">
+// generates a trident branch
+bool GenerateTridentBranch(ref int x, ref int y, ref Vector2Int direction, Stack<Vector2Int> branches)
+{
+	Vector2Int originalBranch = new Vector2Int(x, y);
+	Vector2Int initialDirection = direction;
+
+	for (int i = 0; i < 7; i++)
+	{
+		x += direction.x;
+		y += direction.y;
+		if (!IsValidTilePlacement(x, y)) return false;
+		SpawnTile(x, y);
+	}
+
+	branches.Push(originalBranch);
+	return true;
+}
+
+// generates a staircase pattern
+bool GenerateStaircasePattern(ref int x, ref int y, Vector2Int direction)
+{
+	for (int i = 0; i < 50; i++)
+	{
+		x += direction.x;
+		y += direction.y;
+		if (!IsValidTilePlacement(x, y)) return false;
+		SpawnTile(x, y);
+	}
+	return true;
+}
+
+// generates a spiral pattern
+bool GenerateSpiralPattern(ref int x, ref int y, ref Vector2Int direction)
+{
+	int[] spiralSteps = { 7, 6, 6, 4, 4, 3, 2 };
+
+	foreach (int steps in spiralSteps)
+	{
+		for (int i = 0; i < steps; i++)
+		{
+			x += direction.x;
+			y += direction.y;
+			if (!IsValidTilePlacement(x, y)) return false;
+			SpawnTile(x, y);
+		}
+		direction = new Vector2Int(-direction.y, direction.x);
+	}
+
+	return true;
+}
+</code></pre>
+</section>
+									<h2>Overall design</h2>
+									<br>
+									To make each corner of the dungeon feel distinct, I designed them as unique biomes, each with its own enemy types, powerups, and
+									different kinds of corridor designs. The central area inbetween the biomes, which is largely meant to be both a gentle beginning
+									and a break inbetween bosses, was relatively neutral. Weaker enemies with little to no power-ups. This was to prepare the player 
+									for their adventure -- getting used to combat, learning how enemies act, the controls, etc. It was meant to encourage exploration 
+									as well, proding the curiousity of the player to keep going in whatever direction they choose. Additionally, since the player
+									could choose any corner to explore first, I designed it so that for every boss killed, the remaining bosses and enemies 
+									would get stronger. This helps defeat any linearity, but also ensures that the player is always challenged.
+									<br>
+									With the little resources I had, I attempted to make each biome have some sort of theme. I attempted to assign enemy types and
+									certain pattern generation within the corridors to try and convey this. The black biome, which was home to enemies with a shotgun 
+									like spread, had certain corridor patterns that allowed for more open combat. The green biome, which had slow tanky enemies 
+									had spiral-like patterns, which allow the player to lose the enemy through line of sight if the player needs to recover. 
+									I also attempted to make the power-ups reflect this too! Fast enemies were more likely to drop speed-boosts, while tanks were
+									more likely to drop health-boosts. This allowed players to adapt their strategy based on the biome they were in. Tank enemies
+									too strong? Go kill some spread enemies for some extra damage! This appraoched helped ensure the procedural generation
+									didn't feel too static; every playthrough felt fresh yet still maintained some sort of consistentcy.
+									<br>
+									Another important aspect of this level design was the gameplay arc -- the pacing and progression of challenges throughout 
+									the level. I wanted to implement a false sense of failure for the hook. Players start with a single heart, no powerups, and
+									enemies that were stronger than they are. Balanced so delicately, this largely increased their chance of "dying" at this point,
+									but still allowed the player to experiment with controls and combat. When they died, they would respawn, keeping any powerups 
+									they may have managed to find, and gaining some extra boosts. This was to reinforce the idea that they had to grow stronger to
+									progress, a theme carried out further into the level. This safety net of course only lasted for this beginning phase. Once the
+									player first "dies", the deaths are permanent, increasing difficulty. This created an engaging difficulty curve. 
+									<br>
+									<br>
+									<section>
+										<h3 class="code-toggle">
+											Code Snippets: Enemy Buffs
+											<img src="images/DropDown.png" alt="Dropdown Icon">
+										</h3>
+										<pre><code class="language-cpp">
+void SetWeaponStats()
+{
+	WeaponLogic weapon = GetComponentInChildren<WeaponLogic>();
+	if (weapon == null) return; // No weapon attached, exit early
+
+	// Set base stats per enemy type
+	SetBaseWeaponStats(weapon);
+
+	// Apply buffs based on which bosses have been killed
+	ApplyBossBuffs(weapon);
+}
+
+// Sets the base weapon stats per enemy type
+void SetBaseWeaponStats(WeaponLogic weapon)
+{
+	switch (enemyType)
+	{
+		case EnemyType.BaseEnemy:
+			weapon.ShotCooldown = 3f;
+			weapon.BulletsPerShot = 1;
+			weapon.BulletSpreadAngle = 0.0f;
+			weapon.BulletRange = 5.0f;
+			weapon.BulletSpeed = 3.0f;
+			break;
+
+		case EnemyType.FastEnemy:
+			weapon.ShotCooldown = 3f;
+			weapon.BulletsPerShot = 1;
+			weapon.BulletSpreadAngle = 0.0f;
+			weapon.BulletRange = 5.0f;
+			weapon.BulletSpeed = 6.0f;
+			break;
+
+		case EnemyType.SpreadEnemy:
+			weapon.ShotCooldown = 6f;
+			weapon.BulletsPerShot = 4;
+			weapon.BulletSpreadAngle = 25f;
+			weapon.BulletRange = 5.0f;
+			weapon.BulletSpeed = 5.0f;
+			break;
+
+		case EnemyType.TankEnemy:
+			weapon.ShotCooldown = 3f;
+			weapon.BulletsPerShot = 3;
+			weapon.BulletSpreadAngle = 0.0f;
+			weapon.BulletRange = 6.0f;
+			weapon.BulletSpeed = 2.0f;
+			break;
+
+		case EnemyType.UltraEnemy:
+			weapon.ShotCooldown = 5f;
+			weapon.BulletsPerShot = 5;
+			weapon.BulletSpreadAngle = 50f;
+			weapon.BulletRange = 20.0f;
+			weapon.BulletSpeed = 5.0f;
+			break;
+
+		case EnemyType.BossEnemy:
+			weapon.ShotCooldown = 3f;
+			weapon.BulletsPerShot = 8;
+			weapon.BulletSpreadAngle = 40.0f;
+			weapon.BulletRange = 100.0f;
+			weapon.BulletSpeed = 4.0f;
+			break;
+	}
+}
+
+// Applies boss kill buffs to the weapon and enemy stats
+void ApplyBossBuffs(WeaponLogic weapon)
+{
+	if (!PCGObject.boss1Killed && !PCGObject.boss2Killed && !PCGObject.boss3Killed && !PCGObject.boss4Killed)
+		return; // No buffs to apply, exit early
+
+	// List of boss buffs to apply
+	(bool bossKilled, ref bool buffApplied, float shotCooldownReduction, int healthIncrease, float speedIncrease,
+		float bulletRangeIncrease, float bulletSpeedIncrease, int bulletsPerShotIncrease, float bulletSpreadIncrease, int aggroRangeIncrease)[] bossBuffs =
+	{
+		(PCGObject.boss1Killed, ref boss1BuffApplied, -0.3f, 1, 0.25f,  0f,   0f,   2,  0f,  0),
+		(PCGObject.boss2Killed, ref boss2BuffApplied, -0.3f, 1, 0.25f,  5.0f, 2f,   0,  0f,  0),
+		(PCGObject.boss3Killed, ref boss3BuffApplied, -0.3f, 1, 0.25f,  0f,   0f,   0,  5f,  0),
+		(PCGObject.boss4Killed, ref boss4BuffApplied, -0.3f, 1, 0.25f,  0f,   0f,   0,  0f,  5)
+	};
+
+	foreach (var (bossKilled, buffApplied, cooldownReduction, healthIncrease, speedIncrease, rangeIncrease, speedBoost, bulletsPerShot, spreadIncrease, aggroIncrease) in bossBuffs)
+	{
+		if (bossKilled && !buffApplied)
+		{
+			weapon.ShotCooldown += cooldownReduction;
+			Health += healthIncrease;
+			Speed += speedIncrease;
+			weapon.BulletRange += rangeIncrease;
+			weapon.BulletSpeed += speedBoost;
+			weapon.BulletsPerShot += bulletsPerShot;
+			weapon.BulletSpreadAngle += spreadIncrease;
+			AggroRange += aggroIncrease;
+
+			buffApplied = true;
+		}
+	}
+
+	// TankEnemy and UltraEnemy get extra bonuses
+	if (enemyType == EnemyType.TankEnemy || enemyType == EnemyType.UltraEnemy)
+	{
+		foreach (var (bossKilled, buffApplied, cooldownReduction, healthIncrease, speedIncrease, rangeIncrease, speedBoost, bulletsPerShot, spreadIncrease, aggroIncrease) in bossBuffs)
+		{
+			if (bossKilled && !buffApplied)
+			{
+				weapon.ShotCooldown += cooldownReduction;
+				Health += (enemyType == EnemyType.TankEnemy ? 2 : healthIncrease);
+				Speed += speedIncrease;
+				weapon.BulletRange += rangeIncrease;
+				weapon.BulletSpeed += speedBoost;
+				weapon.BulletsPerShot += bulletsPerShot + (enemyType == EnemyType.UltraEnemy ? 1 : 0);
+				weapon.BulletSpreadAngle += spreadIncrease;
+				AggroRange += (enemyType == EnemyType.TankEnemy ? 7 : aggroIncrease);
+
+				buffApplied = true;
+			}
+		}
+	}
+}
+	</code></pre>
+	</section>
+									<h2>Final Thoughts</h2>
+									<br>
+									This project was a massive learning experience, beyond simply coding procedural generation. It forced me to think critically
+									about level design principles, player agency, and balancing procedural content with structured gameplay. I had to guide the player
+									without any explicity directions, avoid repitition and predictability, and ensure that the level was both challenging and engaging.
+									Through extensive playtesting and iteration, I learned firsthand how procedural generation isn't just about randomness; it is
+									about controlled variation. Level design is not simply building a static world, its preparing for every player to experience
+									and see things differently.
+									<br>
+									Overall this project gave me valuable insights into game systems design, algorithmic level generation, and gameplay balancing,
+									skills that will, as always, be invaluable in my future projects!
 								</p>
 							</article>
 
