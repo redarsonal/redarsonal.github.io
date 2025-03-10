@@ -15,6 +15,7 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 	</head>
 	<body class="is-preload">
+		<div class="mouse-light" id="mouse-light"></div>
 
 		<!-- Wrapper-->
 			<div id="wrapper">
@@ -34,19 +35,33 @@
 						<!-- Me -->
 							<article id="home" class="panel intro">
 								<header>
-									<h1>TayLee Young</h1>
-									<p>Systems Programmer and Game Developer</p>
+									<h1>TayLee Young<span class="blinking-cursor">|</span></h1>
+										<p><span id="typed-text"></span><span class="blinking-cursor">|</span></p>
 								</header>
 								<a href="#work" class="jumplink pic">
 									<span class="arrow icon solid fa-chevron-right"><span>See my work!</span></span>
-									<img src="images/me.jpg" alt="" />
+									<!-- <img src="images/me.jpg" alt="" /> -->
 								</a>
+								<!-- Terminal Window -->
+								<div class="terminal-window">
+									<div class="terminal-header">
+										<div class="buttons">
+											<div class="button"></div>
+											<div class="button minimize"></div>
+											<div class="button maximize"></div>
+										</div>
+										<span>Terminal</span>
+									</div>
+									<div class="terminal-body">
+											<p id="terminal-text"></p><span class="blinking-cursor">|</span>
+									</div>
+								</div>
 							</article>
 
 						<!-- Work -->
 							<article id="work" class="panel">
 								<header>
-									<h2>Featured Work</h2>
+									<h2>Featured Work<span class="blinking-cursor">|</span></h2>
 								</header>
 								<p>
 									Here is some of my most recent work! Some are still in production, some are finished.
@@ -63,14 +78,21 @@
 									<div class="row">
 										<div class="col-12">
 											<figure>
-												<a href="#work1" class="image fit"><img src="images/mothTitleScreen.gif" alt=""></a>
-												<figcaption><strong><i>Moth 2: The Mothening</i></strong></figcaption>
-												<figcaption>Catch, breed, and sell moths. Grow your moth empire!</figcaption>
+												<a href="#work1" class="image fit"><img src="images/pic04.jpg" alt=""></a>
+												<figcaption><strong><i>SHUTTLEFALL</i></strong></figcaption>
+												<figcaption> Aliens, corrupt business practices, and a <b>massive</b> drill.</figcaption>
 											</figure>
 										</div>
 										<div class="col-12">
 											<figure>
-												<a href="#work2" class="image fit"><img src="images/refractionTitleScreen.gif" alt=""></a>
+												<a href="#work2" class="image fit"><img src="images/mothTitleScreen.gif" alt=""></a>
+												<figcaption><strong><i>Moth 2: The Mothening</i></strong></figcaption>
+												<figcaption>From fluttering wings to fortune -- grow your moth empire!</figcaption>
+											</figure>
+										</div>
+										<div class="col-12">
+											<figure>
+												<a href="#work3" class="image fit"><img src="images/refractionTitleScreen.gif" alt=""></a>
 												<figcaption><strong><i>Refraction</i></strong></figcaption>
 												<figcaption>A custom engine running CPU-based pixel-by-pixel light calculations? 
 													How hard can that be?
@@ -79,20 +101,13 @@
 										</div>
 										<div class="col-12">
 											<figure>
-												<a href="#work3" class="image fit"><img src="images/PDthumbnail.png" alt=""></a>
+												<a href="#work4" class="image fit"><img src="images/PDthumbnail.png" alt=""></a>
 												<figcaption><strong><i>Procedurally Generated Dungeon</i></strong></figcaption>
 												<figcaption>What happens when you try to design a playable level using
 													entirely procedurally generated layouts?
 												</figcaption>
 											</figure>
 										</div>
-										<!-- <div class="col-12">
-											<figure>
-												<a href="#work4" class="image fit"><img src="images/pic04.jpg" alt=""></a>
-												<figcaption><strong><i>Elemental Gambit</i></strong></figcaption>
-												<figcaption>Flashy cards and even flashier action lists!</figcaption>
-											</figure>
-										</div> -->
 									</div>
 								</section>
 							</article>
@@ -109,7 +124,7 @@
 							</style>
 
 						<!-- Work 1 -->
-							<article id="work1" class="panel">
+							<article id="work2" class="panel">
 								<header>
 									<h2><strong><i>Moth 2: The Mothening</i></strong></h2>
 								</header>
@@ -121,9 +136,9 @@
 									<br>
 									It's hard to sell these guys with how cute they are though...
 									<br>
-									This was the core concept of a game my team and I are developing during our third 
+									This was the core concept of a game my team and I were developing during our third 
 									and potentially fourth years at DigiPen. It's still currently in development, but
-									I would like to give a glimpse on what I'm working on. It's roughly 5-6 months into
+									I would like to give a glimpse on what I was working on. It's roughly 5-6 months into
 									development at this point, with most important features nearly fleshed out. 
 									I am the lead systems programmer, as well as a Technical Advocate. My job is to 
 									assign tasks, manage timelines, work with the producers and designers on implenting 
@@ -176,7 +191,7 @@
 										<li>
 											We check the moth's quality -- the most impacting factor of their price. Each moth species
 											holds a unique graph on their selling prices in relation to their quality. Some moths are 
-											fairly linear, some are more logarithmic, and some are more like a sine. 
+											close to linear, some are more logarithmic, and some are more like a sine. 
 											<ul>
 												<li>
 													We take the quality and the species into a special formula created to create the 
@@ -229,7 +244,7 @@
 							</article>
 
 						<!-- Work 2 -->
-							<article id="work2" class="panel">
+							<article id="work3" class="panel">
 								<header>
 									<h1><strong><i>Refraction</i></strong></h1>
 								</header>
@@ -416,7 +431,7 @@ Engine::EngineCode Engine::Update()
 Engine::EngineCode Engine::Render()
 {
 	// render all systems
-	for (int i = 0; i < systemCount; ++i)
+	for (int i = systemCount; ++i)
 	{
 		systems[i]->Render();
 	}
@@ -798,7 +813,7 @@ if (ImGui::TreeNode("Import:"))
 							</article>
 
 						<!-- Work 3 -->
-							<article id="work3" class="panel">
+							<article id="work4" class="panel">
 								<header>
 									<h2>Procedurally Generated Dungeon</h2>
 								</header>
@@ -1177,7 +1192,7 @@ void ApplyBossBuffs(WeaponLogic weapon)
 						<!-- Blog -->
 							<article id="blog" class="panel">
 								<header>
-									<h2>Blog</h2>
+									<h2>Blog<span class="blinking-cursor">|</span></h2>
 								</header>
 								<section>
 									<h3><a href="#blog1">How Getting Hacked Helped Me</a></h3>
@@ -1322,7 +1337,7 @@ void ApplyBossBuffs(WeaponLogic weapon)
 						<!-- Contact -->
 							<article id="contact" class="panel">
 								<header>
-									<h2>Contact Me!</h2>
+									<h2>Contact Me!<span class="blinking-cursor">|</span></h2>
 								</header>
 								<form action="https://formspree.io/f/mdkakyod" method="post">
 									<div>
@@ -1350,7 +1365,7 @@ void ApplyBossBuffs(WeaponLogic weapon)
 						<!-- About Me -->
 							<article id="about-me" class="panel">
 								<header>
-									<h2>About Me</h2>
+									<h2>About Me<span class="blinking-cursor">|</span></h2>
 								</header>
 								<p>
 									<!-- Add your text here -->
@@ -1402,7 +1417,7 @@ void ApplyBossBuffs(WeaponLogic weapon)
 				<!-- Footer -->
 					<div id="footer">
 						<ul class="copyright">
-							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; Portfolio.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a><span class="blinking-cursor">|</span></li>
 						</ul>
 					</div>
 
@@ -1414,7 +1429,36 @@ void ApplyBossBuffs(WeaponLogic weapon)
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					const text = "Systems Programmer and Game Developer";
+					let index = 0;
+					const speed = 100; // typing speed in milliseconds
+		
+					function typeWriter() {
+						if (index < text.length) {
+							document.getElementById("typed-text").innerHTML += text.charAt(index);
+							index++;
+							setTimeout(typeWriter, speed);
+						}
+					}
+		
+					typeWriter();
 
+					const terminalText = "Welcome to my terminal!\nType 'help' to see available commands.";
+					let terminalIndex = 0;
+
+					function typeTerminal() {
+						if (terminalIndex < terminalText.length) {
+							document.getElementById("terminal-text").innerHTML += terminalText.charAt(terminalIndex) === '\n' ? '<br>' : terminalText.charAt(terminalIndex);
+							terminalIndex++;
+							setTimeout(typeTerminal, speed);
+						}
+					}
+
+					typeTerminal();
+				});
+			</script>
 	</body>
 </html>	</body>
 </html>

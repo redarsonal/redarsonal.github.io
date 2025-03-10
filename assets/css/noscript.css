@@ -44,3 +44,16 @@
 			#main > .panel:last-child {
 				margin-bottom: 0;
 			}
+
+/* Apply Eirian font to body and relevant text elements */
+body, input, textarea, select, h1, h2, h3, h4, h5, h6, p {
+	font-family: 'Eirian', sans-serif;
+	color: #d0f0c0; /* Greenish white color */
+}
+
+/* Ensure headers are unbolded and unitalicized */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 300; /* Match the rest of the text */
+	font-style: normal; /* Remove italics */
+	color: #d0f0c0; /* Match the rest of the text */
+}

@@ -72,6 +72,14 @@ input, select, textarea {
 	appearance: none;
 }
 
+/* Import Eirian font */
+@font-face {
+	font-family: 'Eirian';
+	src: url('../webfonts/Eirian.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /* Row */
 
 	.row {
@@ -1322,14 +1330,16 @@ input, select, textarea {
 			-webkit-transition: none !important;
 			-ms-transition: none !important;
 			transition: none !important;
-		}
+			}
 
-	body, input, textarea, select {
-		font-family: 'Source Sans Pro', sans-serif;
+	/* Apply Eirian font to body and relevant text elements */
+	body, input, textarea, select, h1, h2, h3, h4, h5, h6, p, a, blockquote, code, pre, figcaption, span, label, legend, table, th, td, caption, dt, dd, li {
+		font-family: 'Eirian', sans-serif;
 		font-weight: 300;
-		color: #777777;
+		color: #d0f0c0; /* Greenish white color */
 		font-size: 20pt;
 		line-height: 1.75em;
+		text-align: center; /* Center text */
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -1437,6 +1447,13 @@ input, select, textarea {
 		margin-bottom: 2em;
 	}
 
+/* Ensure headers are unbolded and unitalicized */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 300; /* Match the rest of the text */
+	font-style: normal; /* Remove italics */
+	color: #d0f0c0; /* Match the rest of the text */
+}
+
 /* Table */
 
 	table {
@@ -1477,7 +1494,8 @@ input, select, textarea {
 	form textarea {
 		-webkit-appearance: none;
 		border: 0;
-		background: #f4f4f4;
+		background: #222222; /* Same color as "Send Message" button */
+		color: #d0f0c0; /* Same color as the rest of the fonts */
 		padding: 0.75em;
 		width: 100%;
 		-moz-transition: background-color .25s ease-in-out;
@@ -1486,13 +1504,21 @@ input, select, textarea {
 		transition: background-color .25s ease-in-out;
 	}
 
-		form input[type="text"]:focus,
-		form input[type="email"]:focus,
-		form input[type="password"]:focus,
-		form select:focus,
-		form textarea:focus {
-			background: #f8f8f8;
-		}
+	form input[type="text"]::placeholder,
+	form input[type="email"]::placeholder,
+	form input[type="password"]::placeholder,
+	form select::placeholder,
+	form textarea::placeholder {
+		color: #d0f0c0; /* Same color as the rest of the fonts */
+	}
+
+	form input[type="text"]:focus,
+	form input[type="email"]:focus,
+	form input[type="password"]:focus,
+	form select:focus,
+	form textarea:focus {
+		background: #333333; /* Slightly lighter color on focus */
+	}
 
 	form input[type="text"],
 	form input[type="email"],
@@ -1773,12 +1799,22 @@ input, select, textarea {
 		text-align: center;
 		height: 4.25em;
 		cursor: default;
+		position: fixed;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100%;
+		max-width: 45em;
+		background: rgba(13, 31, 34, 0.9);
+		z-index: 1000;
+		padding: 0.5em 0;
+		
 	}
 
 		#nav a {
 			position: relative;
 			display: inline-block;
-			color: #ffffff;
+			color: #d0f0c0; /* Same color as the font */
 			width: 1em;
 			height: 1em;
 			line-height: 0.9em;
@@ -1805,15 +1841,16 @@ input, select, textarea {
 				display: block;
 				position: absolute;
 				left: 50%;
-				bottom: -0.75em;
+				bottom: -0.25em;
 				margin-left: -0.5em;
-				border-bottom: solid 0em #ffffff;
-				border-left: solid 0.5em transparent;
-				border-right: solid 0.5em transparent;
-				-moz-transition: border-bottom-width .25s ease-in-out;
-				-webkit-transition: border-bottom-width .25s ease-in-out;
-				-ms-transition: border-bottom-width .25s ease-in-out;
-				transition: border-bottom-width .25s ease-in-out;
+				border-bottom: solid 0em #d0f0c0; /* Same color as the font */
+				width: 1em;
+				height: 0.05em; /* Height of the bar */
+				background-color: #d0f0c0; /* Same color as the font */
+				-moz-transition: height .25s ease-in-out;
+				-webkit-transition: height .25s ease-in-out;
+				-ms-transition: height .25s ease-in-out;
+				transition: height .25s ease-in-out;
 			}
 
 			#nav a span {
@@ -1860,7 +1897,7 @@ input, select, textarea {
 			}
 
 				#nav a.active:after {
-					border-bottom-width: 0.5em;
+					height: 0.08em; /* Height of the bar when active */
 				}
 
 		@media screen and (max-width: 980px) {
@@ -1947,8 +1984,8 @@ input, select, textarea {
 		position: relative;
 		overflow: hidden;
 		width: 100%;
-		background: #ffffff;
-		box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.25);
+		background: none; /* Remove white background */
+		box-shadow: none; /* Remove box shadow */
 		-moz-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
 		-webkit-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
 		-ms-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
@@ -1956,10 +1993,8 @@ input, select, textarea {
 	}
 
 		#main > .panel {
-			-moz-transition: opacity 0.25s ease-in-out;
-			-webkit-transition: opacity 0.25s ease-in-out;
-			-ms-transition: opacity 0.25s ease-in-out;
-			transition: opacity 0.25s ease-in-out;
+			background: none; /* Remove white background */
+			box-shadow: none; /* Remove box shadow */
 			margin-bottom: 0;
 			position: relative;
 			padding: 3.5em 2.5em 2.5em 2.5em;
@@ -1993,6 +2028,8 @@ input, select, textarea {
 				-webkit-align-items: center;
 				-ms-align-items: center;
 				align-items: center;
+				background: none; /* Remove white background */
+				box-shadow: none; /* Remove box shadow */
 			}
 
 				#main > .panel.intro .pic {
@@ -2301,4 +2338,90 @@ code {
 	transition: transform 0.3s ease;
 	width: 1.5em;
 	height: 1.5em;
+}
+
+/* Light Effect */
+.mouse-light {
+	position: absolute;
+	width: 800px;
+	height: 800px;
+	background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(13, 31, 34, 0) 40%);
+	border-radius: 50%;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+	z-index: 9999;
+}
+
+/* Remove additional formatting for homepage */
+#home {
+	background: none !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+/* Blinking Cursor */
+.blinking-cursor {
+	color: #d0f0c0; /* Same color as the font */
+	font-weight: 300;
+	font-style: normal;
+	animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+	from, to {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+/* Terminal Window */
+.terminal-window {
+	background: #222222; /* Same color as "Send Message" button */
+	color: #d0f0c0; /* Same color as the rest of the fonts */
+	padding: 1em;
+	border-radius: 5px;
+	font-family: 'Source Code Pro', monospace;
+	font-size: 0.9em;
+	line-height: 1.4em;
+	margin-top: 2em;
+}
+
+.terminal-header {
+	background: #333333; /* Slightly lighter color */
+	padding: 0.5em;
+	border-radius: 5px 5px 0 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.terminal-header .buttons {
+	display: flex;
+	gap: 0.5em;
+}
+
+.terminal-header .button {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #ff5f56; /* Close button color */
+}
+
+.terminal-header .button.minimize {
+	background: #ffbd2e; /* Minimize button color */
+}
+
+.terminal-header .button.maximize {
+	background: #27c93f; /* Maximize button color */
+}
+
+.terminal-body {
+	background: #222222; /* Same color as "Send Message" button */
+	padding: 1em;
+	border-radius: 0 0 5px 5px;
+	overflow-y: auto;
+	max-height: 300px;
 }

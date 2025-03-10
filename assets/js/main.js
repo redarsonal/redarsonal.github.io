@@ -233,4 +233,11 @@
 		});
 	});
 
+	// Function to update the position of the light effect
+	document.addEventListener('mousemove', function(event) {
+		const light = document.getElementById('mouse-light');
+		light.style.left = event.pageX + 'px';
+		light.style.top = event.pageY + 'px';
+	});
+
 })(jQuery);
