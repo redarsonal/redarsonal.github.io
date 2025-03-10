@@ -1340,6 +1340,7 @@ input, select, textarea {
 		font-size: 20pt;
 		line-height: 1.75em;
 		text-align: center; /* Center text */
+		text-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Add slight blur for retro terminal look */
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -1452,6 +1453,47 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 300; /* Match the rest of the text */
 	font-style: normal; /* Remove italics */
 	color: #d0f0c0; /* Match the rest of the text */
+	text-shadow: 0 0 2px rgba(0, 255, 0, 0.5); /* Add slight blur for retro terminal look */
+}
+
+/* Add blur effect to specific header text */
+.blur-text {
+	text-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Add slight blur for retro terminal look */
+}
+
+/* Faint green blur effect for the whole screen */
+body::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 255, 0, 0.005); /* Very faint green overlay */
+	pointer-events: none;
+	z-index: 9998;
+}
+
+/* CRT line effect */
+.crt-line {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: rgba(0, 255, 0, 0.1); /* Very faint green line */
+	animation: crt-line-move 2s linear infinite;
+	pointer-events: none;
+	z-index: 9999;
+}
+
+@keyframes crt-line-move {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(100vh);
+	}
 }
 
 /* Table */
@@ -2377,51 +2419,35 @@ code {
 	}
 }
 
-/* Terminal Window */
-.terminal-window {
-	background: #222222; /* Same color as "Send Message" button */
-	color: #d0f0c0; /* Same color as the rest of the fonts */
-	padding: 1em;
-	border-radius: 5px;
+
+/* Initial Black Screen */
+#black-screen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: black;
+	color: #d0f0c0; /* Greenish white color */
 	font-family: 'Source Code Pro', monospace;
-	font-size: 0.9em;
-	line-height: 1.4em;
-	margin-top: 2em;
-}
-
-.terminal-header {
-	background: #333333; /* Slightly lighter color */
-	padding: 0.5em;
-	border-radius: 5px 5px 0 0;
+	font-size: 1.2em;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
+	justify-content: flex-start;
+	padding: 20px;
+	z-index: 10000;
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
+	text-align: left; /* Ensure text is left-aligned */
+	white-space: pre-wrap; /* Preserve line breaks */
 }
 
-.terminal-header .buttons {
-	display: flex;
-	gap: 0.5em;
-}
-
-.terminal-header .button {
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
-	background: #ff5f56; /* Close button color */
-}
-
-.terminal-header .button.minimize {
-	background: #ffbd2e; /* Minimize button color */
-}
-
-.terminal-header .button.maximize {
-	background: #27c93f; /* Maximize button color */
-}
-
-.terminal-body {
-	background: #222222; /* Same color as "Send Message" button */
-	padding: 1em;
-	border-radius: 0 0 5px 5px;
-	overflow-y: auto;
-	max-height: 300px;
-}
+#boot-sequence {
+	display: block;
+	width: 100%;
+	text-align: left;       /* Force left alignment */
+	white-space: pre-wrap;  /* Preserve line breaks and spaces */
+	margin: 0;
+	padding: 0;
+	font-family: 'Source Code Pro', monospace; /* For that retro terminal look */
+  }

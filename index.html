@@ -15,6 +15,9 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 	</head>
 	<body class="is-preload">
+			<div id="black-screen">
+				<p id="boot-sequence"></p>
+			</div>
 		<div class="mouse-light" id="mouse-light"></div>
 
 		<!-- Wrapper-->
@@ -35,33 +38,16 @@
 						<!-- Me -->
 							<article id="home" class="panel intro">
 								<header>
-									<h1>TayLee Young<span class="blinking-cursor">|</span></h1>
-										<p><span id="typed-text"></span><span class="blinking-cursor">|</span></p>
+									<h1 class="blur-text">TayLee Young<span class="blinking-cursor">|</span></h1>
+											<p>Systems Programmer and Game Designer</p>
+										<!--<img src="images/me.jpg" alt="" /> -->
 								</header>
-								<a href="#work" class="jumplink pic">
-									<span class="arrow icon solid fa-chevron-right"><span>See my work!</span></span>
-									<!-- <img src="images/me.jpg" alt="" /> -->
-								</a>
-								<!-- Terminal Window -->
-								<div class="terminal-window">
-									<div class="terminal-header">
-										<div class="buttons">
-											<div class="button"></div>
-											<div class="button minimize"></div>
-											<div class="button maximize"></div>
-										</div>
-										<span>Terminal</span>
-									</div>
-									<div class="terminal-body">
-											<p id="terminal-text"></p><span class="blinking-cursor">|</span>
-									</div>
-								</div>
 							</article>
 
 						<!-- Work -->
 							<article id="work" class="panel">
 								<header>
-									<h2>Featured Work<span class="blinking-cursor">|</span></h2>
+									<h2 class="blur-text">Featured Work<span class="blinking-cursor">|</span></h2>
 								</header>
 								<p>
 									Here is some of my most recent work! Some are still in production, some are finished.
@@ -79,21 +65,21 @@
 										<div class="col-12">
 											<figure>
 												<a href="#work1" class="image fit"><img src="images/pic04.jpg" alt=""></a>
-												<figcaption><strong><i>SHUTTLEFALL</i></strong></figcaption>
-												<figcaption> Aliens, corrupt business practices, and a <b>massive</b> drill.</figcaption>
+												<figcaption><i>SHUTTLEFALL</i></figcaption>
+												<figcaption> Aliens, corrupt business practices, and a <i>massive</i> drill.</figcaption>
 											</figure>
 										</div>
 										<div class="col-12">
 											<figure>
 												<a href="#work2" class="image fit"><img src="images/mothTitleScreen.gif" alt=""></a>
-												<figcaption><strong><i>Moth 2: The Mothening</i></strong></figcaption>
+												<figcaption><i>Moth 2: The Mothening</i></figcaption>
 												<figcaption>From fluttering wings to fortune -- grow your moth empire!</figcaption>
 											</figure>
 										</div>
 										<div class="col-12">
 											<figure>
 												<a href="#work3" class="image fit"><img src="images/refractionTitleScreen.gif" alt=""></a>
-												<figcaption><strong><i>Refraction</i></strong></figcaption>
+												<figcaption><i>Refraction</i></figcaption>
 												<figcaption>A custom engine running CPU-based pixel-by-pixel light calculations? 
 													How hard can that be?
 												</figcaption>
@@ -102,7 +88,7 @@
 										<div class="col-12">
 											<figure>
 												<a href="#work4" class="image fit"><img src="images/PDthumbnail.png" alt=""></a>
-												<figcaption><strong><i>Procedurally Generated Dungeon</i></strong></figcaption>
+												<figcaption><i>Procedurally Generated Dungeon</i></figcaption>
 												<figcaption>What happens when you try to design a playable level using
 													entirely procedurally generated layouts?
 												</figcaption>
@@ -1192,7 +1178,7 @@ void ApplyBossBuffs(WeaponLogic weapon)
 						<!-- Blog -->
 							<article id="blog" class="panel">
 								<header>
-									<h2>Blog<span class="blinking-cursor">|</span></h2>
+									<h2 class="blur-text">Blog<span class="blinking-cursor">|</span></h2>
 								</header>
 								<section>
 									<h3><a href="#blog1">How Getting Hacked Helped Me</a></h3>
@@ -1337,7 +1323,7 @@ void ApplyBossBuffs(WeaponLogic weapon)
 						<!-- Contact -->
 							<article id="contact" class="panel">
 								<header>
-									<h2>Contact Me!<span class="blinking-cursor">|</span></h2>
+									<h2 class="blur-text">Contact Me!<span class="blinking-cursor">|</span></h2>
 								</header>
 								<form action="https://formspree.io/f/mdkakyod" method="post">
 									<div>
@@ -1365,7 +1351,7 @@ void ApplyBossBuffs(WeaponLogic weapon)
 						<!-- About Me -->
 							<article id="about-me" class="panel">
 								<header>
-									<h2>About Me<span class="blinking-cursor">|</span></h2>
+									<h2 class="blur-text">About Me<span class="blinking-cursor">|</span></h2>
 								</header>
 								<p>
 									<!-- Add your text here -->
@@ -1406,8 +1392,8 @@ void ApplyBossBuffs(WeaponLogic weapon)
 									everyone, that inspire everyone, and that change everyone.
 									<br>
 									<br>
-									Currently, I am apart of team Practically Malware, creating a student game project
-									about catching, selling, and breeding moths. Feel free to read about that too!
+									Currently, I am apart of team ADMIS, working on a student project about a corrupt corporation,
+									aliens, and a big beefy drill. Feel free to read about that too!
 									I am looking for internships and job opportunities, so feel free to contact me anytime!
 								</p>
 							</article>
@@ -1431,9 +1417,8 @@ void ApplyBossBuffs(WeaponLogic weapon)
 			<script src="assets/js/main.js"></script>
 			<script>
 				document.addEventListener('DOMContentLoaded', function() {
-					const text = "Systems Programmer and Game Developer";
 					let index = 0;
-					const speed = 100; // typing speed in milliseconds
+					const speed = 70; // typing speed in milliseconds
 		
 					function typeWriter() {
 						if (index < text.length) {
@@ -1445,7 +1430,6 @@ void ApplyBossBuffs(WeaponLogic weapon)
 		
 					typeWriter();
 
-					const terminalText = "Welcome to my terminal!\nType 'help' to see available commands.";
 					let terminalIndex = 0;
 
 					function typeTerminal() {

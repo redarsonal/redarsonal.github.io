@@ -46,9 +46,14 @@
 			}
 
 /* Apply Eirian font to body and relevant text elements */
-body, input, textarea, select, h1, h2, h3, h4, h5, h6, p {
+body, input, textarea, select, h1, h2, h3, h4, h5, h6, p, a, blockquote, code, pre, figcaption, span, label, legend, table, th, td, caption, dt, dd, li {
 	font-family: 'Eirian', sans-serif;
+	font-weight: 300;
 	color: #d0f0c0; /* Greenish white color */
+	font-size: 20pt;
+	line-height: 1.75em;
+	text-align: center; /* Center text */
+	text-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Add slight blur for retro terminal look */
 }
 
 /* Ensure headers are unbolded and unitalicized */
@@ -56,4 +61,10 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 300; /* Match the rest of the text */
 	font-style: normal; /* Remove italics */
 	color: #d0f0c0; /* Match the rest of the text */
+	text-shadow: 0 0 2px rgba(0, 255, 0, 0.5); /* Add slight blur for retro terminal look */
+}
+
+/* Add blur effect to specific header text */
+.blur-text {
+	text-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Add slight blur for retro terminal look */
 }

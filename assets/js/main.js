@@ -240,4 +240,72 @@
 		light.style.top = event.pageY + 'px';
 	});
 
+	document.addEventListener('DOMContentLoaded', function() {
+		const bootText = `> Starting boot sequence...
+	  > Performing Power-On Self-Test (POST)...
+	  > [Booting...]
+	  > [Memory OK] [CPU OK] [Disk OK]
+	  > Loading custom environment...
+	  > Initializing user interface...
+	  > Loading bootloader...
+	  > System boot complete.
+	  
+	  > Welcome! Feel free to check out my work, read about me, or reach out!`.trim();
+	  
+		const bootContainer = document.getElementById("boot-sequence");
+		bootContainer.innerHTML = ""; // Clear previous content
+		let bootIndex = 0;
+		const bootSpeed = 20; // typing speed
+	  
+		function typeBootSequence() {
+		  if (bootIndex < bootText.length) {
+			const char = bootText.charAt(bootIndex);
+			if (char === '\n') {
+			  bootContainer.innerHTML += '<br>';
+			  // Optionally, skip any extra spaces or tabs right after a newline:
+			  while (
+				bootText.charAt(bootIndex + 1) === ' ' ||
+				bootText.charAt(bootIndex + 1) === '\t'
+			  ) {
+				bootIndex++;
+			  }
+			} else {
+			  bootContainer.innerHTML += char;
+			}
+			bootIndex++;
+			setTimeout(typeBootSequence, bootSpeed);
+		  } else {
+			// Finish up (fade out, etc.)
+			setTimeout(() => {
+			  document.getElementById("black-screen").style.opacity = 0;
+			  setTimeout(() => {
+				document.getElementById("black-screen").style.display = 'none';
+			  }, 1000);
+			}, 2000);
+		  }
+		}
+	  
+		setTimeout(typeBootSequence, 1000); // Start after 1 second
+	  });	  
+
+	// Function to create and animate CRT line effect
+	function createCrtLine() {
+		const crtLine = document.createElement('div');
+		crtLine.classList.add('crt-line');
+		document.body.appendChild(crtLine);
+
+		function moveCrtLine() {
+			crtLine.style.animation = 'none';
+			crtLine.offsetHeight; // Trigger reflow
+			crtLine.style.animation = '';
+			setTimeout(moveCrtLine, Math.random() * 4000 + 1000); // Wait 1-5 seconds
+		}
+
+		moveCrtLine();
+	}
+
+	document.addEventListener('DOMContentLoaded', function() {
+		createCrtLine();
+	});
+
 })(jQuery);
