@@ -2451,3 +2451,17 @@ code {
 	padding: 0;
 	font-family: 'Source Code Pro', monospace; /* For that retro terminal look */
   }
+
+  /* Override for code snippets */
+pre, pre code {
+    font-family: Consolas, "Courier New", monospace;  /* Use a standard monospaced font */
+    color: #000 !important;                           /* Black text for readability */
+    text-align: left !important;                      /* Left aligned text */
+    white-space: pre !important;                      /* Preserve whitespace exactly */
+    text-shadow: none !important;                     /* Remove text shadow */
+    font-size: 16pt;                                  /* Adjust font size if needed */
+    background-color: #f5f5f5;                        /* Optional: Light background for contrast */
+    padding: 1em;                                     /* Optional: Padding for better spacing */
+    border: 1px solid #ccc;                           /* Optional: Border to frame the code */
+    overflow-x: auto;                                 /* Ensure horizontal scrolling if needed */
+}
