@@ -1837,118 +1837,46 @@ body::before {
 
 /* Nav */
 
-	#nav {
-		text-align: center;
-		height: 4.25em;
-		cursor: default;
-		position: fixed;
-		top: 0;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 100%;
-		max-width: 45em;
-		background: rgba(13, 31, 34, 0.9);
-		z-index: 1000;
-		padding: 0.5em 0;
-		
-	}
+#nav {
+	text-align: left; /* Left align the text */
+	height: 4.25em;
+	cursor: default;
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	max-width: 80em;
+	background: rgba(13, 31, 34, 0.9);
+	z-index: 1000;
+	padding: 0.5em 0;
+	border-bottom: 2px solid #d0f0c0; /* Thin line at the bottom */
+}
 
-		#nav a {
-			position: relative;
-			display: inline-block;
-			color: #d0f0c0; /* Same color as the font */
-			width: 1em;
-			height: 1em;
-			line-height: 0.9em;
-			font-size: 2.5em;
-			margin: 0 0.25em 0 0.25em;
-			opacity: 0.35;
-			outline: 0;
-			-moz-transition: opacity .25s ease-in-out;
-			-webkit-transition: opacity .25s ease-in-out;
-			-ms-transition: opacity .25s ease-in-out;
-			transition: opacity .25s ease-in-out;
-		}
+#nav a {
+	position: relative;
+	display: inline-block;
+	color: #d0f0c0; /* White color */
+	font-family: 'Eirian', sans-serif; /* Eirian font */
+	font-size: 1.2em; /* Slightly smaller font size */
+	margin: 0 1em; /* Spacing between links */
+	text-decoration: none;
+	opacity: 1.0;
+	outline: 0;
+	transition: opacity .25s ease-in-out;
+	padding: 0.6em 1em 0.75em 1em; /* Adjust padding to connect with the bottom line */
+	border-bottom: none; /* Remove bottom border from each navigation link */
+	border-radius: 5px 5px 0 0; /* Keep rounded corners for the folder tab effect */
+}
 
-			#nav a.icon:before {
-				padding-right: 0;
-			}
+#nav a.active {
+	background: #d0f0c0; /* Highlight active tab */
+	color: #0d1f22; /* Text color for active tab */
+}
 
-			#nav a:before {
-				font-size: 0.8em;
-			}
-
-			#nav a:after {
-				content: '';
-				display: block;
-				position: absolute;
-				left: 50%;
-				bottom: -0.25em;
-				margin-left: -0.5em;
-				border-bottom: solid 0em #d0f0c0; /* Same color as the font */
-				width: 1em;
-				height: 0.05em; /* Height of the bar */
-				background-color: #d0f0c0; /* Same color as the font */
-				-moz-transition: height .25s ease-in-out;
-				-webkit-transition: height .25s ease-in-out;
-				-ms-transition: height .25s ease-in-out;
-				transition: height .25s ease-in-out;
-			}
-
-			#nav a span {
-				display: block;
-				position: absolute;
-				background: #222222;
-				color: #ffffff;
-				top: -2.75em;
-				font-size: 0.3em;
-				height: 2.25em;
-				line-height: 2.25em;
-				left: 50%;
-				opacity: 0;
-				-moz-transition: opacity .25s ease-in-out;
-				-webkit-transition: opacity .25s ease-in-out;
-				-ms-transition: opacity .25s ease-in-out;
-				transition: opacity .25s ease-in-out;
-				width: 5.5em;
-				margin-left: -2.75em;
-			}
-
-				#nav a span:after {
-					content: '';
-					display: block;
-					position: absolute;
-					bottom: -0.4em;
-					left: 50%;
-					margin-left: -0.6em;
-					border-top: solid 0.6em #222222;
-					border-left: solid 0.6em transparent;
-					border-right: solid 0.6em transparent;
-				}
-
-			#nav a:hover {
-				opacity: 1.0;
-			}
-
-				#nav a:hover span {
-					opacity: 1.0;
-				}
-
-			#nav a.active {
-				opacity: 1.0;
-			}
-
-				#nav a.active:after {
-					height: 0.08em; /* Height of the bar when active */
-				}
-
-		@media screen and (max-width: 980px) {
-
-			#nav a span {
-				display: none;
-			}
-
-		}
+#nav a:hover {
+	opacity: 0.7;
+}
 
 /* Wrapper */
 

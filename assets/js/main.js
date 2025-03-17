@@ -50,6 +50,12 @@
 
 			});
 
+	// Highlight active tab
+	$nav_links.on('click', function() {
+		$nav_links.removeClass('active');
+		$(this).addClass('active');
+	});
+
 	// Panels.
 
 		// Initialize.
