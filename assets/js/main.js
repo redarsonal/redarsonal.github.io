@@ -261,7 +261,7 @@
 		const bootContainer = document.getElementById("boot-sequence");
 		bootContainer.innerHTML = ""; // Clear previous content
 		let bootIndex = 0;
-		const bootSpeed = 20; // typing speed
+		const bootSpeed = 0.2; // typing speed
 	  
 		function typeBootSequence() {
 		  if (bootIndex < bootText.length) {
