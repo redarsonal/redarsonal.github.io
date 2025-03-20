@@ -52,7 +52,8 @@
 								</header>
 								<p>
 									Here is some of my most recent work! Some are still in production, some are finished.
-									This work showcases my skills in programming, game design, and systems. 
+									This work showcases my skills in programming, game design, and systems. If you would to take a peek at my
+									resume, you can find it here, or over in my about me page. 
 									<br>
 									<br>
 									<!-- Projects that I have lost access to their original source code, as well as commentary
@@ -113,298 +114,58 @@
 						<!-- Work 1 -->
 							<article id="work2" class="panel">
 								<header>
-									<h2><strong><i>Moth 2: The Mothening</i></strong></h2>
+									<h2><i>Moth 2: The Mothening</i></h2>
 								</header>
 								<p>
-									On an alien planet, moths grow to be 5x the size of the ones we find on earth. 
-									They are cute, cuddly, and worth quite the price. You set up base on this planet,
-									creating a greenhouse as your base of operations. Alone on the planet, you seek to
-									catch, breed, and sell moths all in an attempt to become a monopoly. 
+									On an alien planet, moths grow to be 5x the size of the ones we find on Earth. They are cute, cuddly, and worth quite the price. You set up a base on this planet, creating a greenhouse as your base of operations. Alone on the planet, you seek to catch, breed, and sell moths all to become a monopoly. 
 									<br>
 									It's hard to sell these guys with how cute they are though...
 									<br>
-									This was the core concept of a game my team and I were developing during our third 
-									and potentially fourth years at DigiPen. It's still currently in development, but
-									I would like to give a glimpse on what I was working on. It's roughly 5-6 months into
-									development at this point, with most important features nearly fleshed out. 
-									I am the lead systems programmer, as well as a Technical Advocate. My job is to 
-									assign tasks, manage timelines, work with the producers and designers on implenting 
-									their ideas, and handle interdisciplinary communication. I also have a hand in designing
-									and programming most systems within the game. All of this was done in Unreal Engine 5, 
-									not only the first time I've used this engine, but also the first time I've used a 
-									commercial engine to this extent before. This was another massive learning process, 
-									but I feel as if this is one of my most personally successful projects yet. This 
-									project has had many ups and downs, and is not in its best shape right now, yet
-									I cannot be anything but proud of the work put in. 
+									<h2> Title 1 </h2>
+									This project was one of the first major scale projects I had been a part of. It was the first time I worked on such a large team consisting of different disciplines, the first time I was able to work on a GAM project using Unreal Engine 5, let alone any commercial engine. The project was a massive learning experience for me, yet one of my favorite projects to date. I've been in leadership positions before, but not quite of this magnitude. I was the Technical Advocate (or Technical Lead, or 
+ the "manager of the programmers"), and I was also the main systems designer. Considering this project was heavily systems-focused, I had a lot of work to do.
+									<br>
+									<h2> Title 2 </h2>
+									My main goal was to design the Market, a massive computer sitting in the greenhouse. The player could catch or breed moths and sell them here, where the main point was to get as much money and monopolize the moth market. On the outside, it seemed simple -- take the moth, look up a price, and sell it for said price. However, we wanted to be unique. Since this game initially started as an economy simulator, we decided to put a little more thought into it. The breakdown of how a <i>single</i> moth's value gets calculated is as follows
 									<br>
 									<br>
-									<h2>The Rocky Beginning</h2>
-									Originally, this game was planned to be a sort of economy simulator experience.
-									Your main focus was to sell all the moths you catch for profit. So we knew from the 
-									beginning one of the largest and most important systems was going to be the market system.
-									I decided to take this monumental task on, knowing it would grant me the best chance at 
-									truly exploring systems programming. I had some experience previously that brought me interest,
-									but this would be the first time I was given such a large task. 
-									But before we could sell anything, we had to catch moths first. This was the first mechanic we 
-									implemented, followed by the breeding system, as we knew we also had to sell the different life
-									stages of the moths as well. 
-									<br>
-									This gave me the break I needed to set up how I wanted to manage things. I took time to figure out
-									what each programmer had skills in, how they wanted to communicate best, how we wanted to handle 
-									task management. These were needed, and since I had to wait to implement the market, this was 
-									the perfect time. The majority of this time was pretty cut-and-dry, only requiring iteration 
-									in terms of timeline management. By the time I had my affairs in order, I still couldn't start
-									on the market yet -- we had some new issues arise. Our source control was giving us more issues
-									than we knew what to do with, miscommunications inbetween our departments, and overall trial and 
-									error. 
-									<br>
-									<br>
-									<h2>The Market</h2>
-									It took several weeks of focus almost entirely on my role as the Technical Advocate before I could 
-									even begin programming. Once I had the opportunity however, I swooped in. I focused on keeping the 
-									prototype simple -- you put in a moth, you get money out. It was a set price for everything, with 
-									no real control, but it was a start! I allowed the designers to begin planning out how they wanted 
-									the system to go. After many spreedsheets and discussions, we had several things we wanted the market 
-									to do -- and it was going to take a lot of effort. As the other programmers had their own personal
-									tasks and goals to work on, this was something I focused on nearly entirely on my own. 
-									<br>
-									To break it down simply, the overview of the cost price was calculated as follows, starting with 
-									the moment the player presses 'sell':
-									<ul>
-										<li>
-											We check if the moth is wild caught or bred first, as this impacts the inital base price,
-											prior to all modifications. Wild caught moths sell for less, relative to their base price.
+									<ol>
+										<li>Check if the moth is wild-caught or bred. Wild-caught moths sell for slightly less.</li>
+										<li> We need both the species and that specific moth's quality next -- the most important factors
+											in determining a base price.
 										</li>
-										<li>
-											We check the moth's quality -- the most impacting factor of their price. Each moth species
-											holds a unique graph on their selling prices in relation to their quality. Some moths are 
-											close to linear, some are more logarithmic, and some are more like a sine. 
-											<ul>
-												<li>
-													We take the quality and the species into a special formula created to create the 
-													sell price based on the graph described above. Lots of finicky decimal values that
-													are used here, all of which change based on which species it is.
-												</li>
-												<li>
-													Additional fact: all of the assigning of the quality was done by me! It also
-													required a unique system, which calculated the percentage chance (based on multiple factors)
-													of what quality type a moth could spawn with, as well as the exact quality numerical value 
-													based on the distribution of that type!
-												</li>
-											</ul>
+										<li>Taking the species, we can add certain modifiers to get the proper ratio of quality to sell price. This is important as rarely does a species have a simple exponential path -- most are logarithmic, sine, or even a little bit linear. This gives the player a reason to find what species are worth more
+											at different qualities.
 										</li>
-										<li>
-											Similar to how a real life stock market works, every ten minutes different moth species have a new 
-											demand, increasing or decreasing their price. The chance of a price change, and how much it changes
-											is also relative to whether or not it was recently in demand. 
+										<li>Of course, this means we also must check the quality. From 1-100, we group the qualities into 
+											subcategories, some rarer than others. Breeding or being lucky while outside can get you a higher quality -- which of course, typically means more money as well.
 										</li>
-									</ul>
+									</ol> 
 									<br>
-									Of course, as I said, this is a massive simplification of the calculations, but it gives a good idea on how 
-									it all works. This system relied heavily on other systems as well -- quality, a market cycle, species distribution,
-									etc. which made this process take approximately five months of work. It required a lot of creativity on how to 
-									best interconnect each of these systems and mechanics. As well as reinforce my skills in communication, debugging,
-									and overall systems programming. 
+									It gets a little more in-depth than all that, but that's the overview. While I worked on this nearly entirely by myself, I still got some great help from our designers and other programmers to help me
+ test and try new methods to get it just right.
 									<br>
+									While working on this major mechanic, it was my job to ensure that the rest of the programmers had clear goals. I worked with each one personally, making sure that each one had the resources they needed, knew what they had to do, and whenever possible, worked on tasks that they were most compatible with. We had a programmer fitting for most tasks -- UI/UX, tools, AI, gameplay, etc. I had to ensure that they were comfortable both in their tasks themselves, and their respective workloads. Communication 
+was key to everything I did. Using a multitude of tools, such as Trello, Discord, When2Meet, and Teams, I could ensure that everyone had all the resources to communicate. Fleshed out documentation for the 
+game itself aided in this as well.
 									<br>
-									<h2>Continuing Development</h2>
+									<h2> Title 3 </h2>
+									Of course, nothing was all perfect, even beyond bugs and crashes. Conflicts between teammates, especially when it came to design choices, were common. This often meant that I had to help handle the situation or guide the conversation to a productive end. If the programmers felt like the deadlines being requested of them from the producer were too tight or unrealistic, I mediated that conversation as well, pushing to come to a compromise that doesn't overwhelm the programmers, yet ensures we were still on track for our milestones.
 									<br>
-									By this point, we had some hefty systems in play already, with more to come. Our three main mechanics, catching, breeding, 
-									and selling, were pretty solid by this point. But we needed new things to keep it fresh and interesting -- a demand from the 
-									player to constantly be rotating their interest. We moved towards pinning and companion moths -- ways to get slight boosts
-									like jumping higher, or having a better chance at higher quality. You should also feed your moth friends, in order to keep 
-									them from running away. By exploring, you find all sorts of foods, as well as new moths! You can even give your moths some 
-									homes to keep them safe and cozy within the greenhouse.
+									Additionally, as is the nature of programming, both my pride and joy in the market and the other
+ systems I had a hand in, were not without their issues either. The market went through several iterations, causing me to delay and rework time and time again. Since the three core mechanics of catching, breeding, and selling were so interconnected, this also meant a lot of back-and-forth
+ handling. Reworking or changing one mechanic often leads to a cascade of changes in the other two. While we often warned the designers and producers, we ultimately had many 
+ issues with a constantly changing game -- to the point that the very market I put so much time into was nearly entirely scrapped, being reworked into a much different system. The bane of every software developer. 
 									<br>
-									But, unfortunately, as game development usually goes, many of these ideas didn't work out as planned.
-									<br>
-									As I continued to lead and program throughout this project, it wasn't long before we ran into more issues. Constant
-									changes in design leading to repeated refactoring and scrapping of mechanics, losing our art team due to miscommunications 
-									and poor management, teammate illnesses, source control difficulties, and more. This had lead production to slow to a crawl, 
-									posing a risk of failure with the project. Many of the systems I have worked on or outright created had been changed due to 
-									design choices. In truth, the outlook of continuing production may be bleak at this point. 
-									Nonetheless, I can say with absolute certainty that I am, and will always be, proud of the work I put in. I am proud of the
-									team's efforts work and the memories I made! I experienced, developed, and gained skills that I may not have in a different
-									situation. Whether or not development continues, I find myself constantly looking to build on everything I have learned thus far.
+									<h2> Title 4 </h2>
+									In the end, the project has been an incredible experience. While every project that I have worked on -- big or small -- always lets me expand my knowledge and experiment, this project is arguably the most relevant to me. It was the first time I was able to work on a project with such important roles, and it was also the definitive reason I enjoyed systems programming. I had an interest in it before but had yet to dive into it. This project was the perfect opportunity to do so, and I ran with it. With how interconnected and complex every system was, I was able to learn so much about how to design, implement, and maintain systems while balancing my other tasks as well. My leadership skills have also improved -- while it wasn't the first time I had taken a role similar to it, this pushed what I already knew and proved there is always time for improvement. 
 								</p>
-								<!-- Code Snippets Section -->
-								<section>
-									<h3 class="code-toggle">
-										Code Snippets: Simple Engine Implementation
-										<img src="images/DropDown.png" alt="Dropdown Icon">
-									</h3>
-									<pre class="code-snippet"><code class="language-cpp">
-// singleton instance
-Engine* Engine::instance = new Engine();
-
-Engine::EngineCode Engine::Start()
-{
-	// time instance
-	time = new Time();
-
-	AudioManager.LoadMusicFromJSON("./Data/music.json");
-	AudioManager.LoadSFXFromJSON("./Data/SFX.json");
-	// initalize all systems
-	for (int i = 0; i < systemCount; ++i)
-	{
-		try
-		{
-			systems[i]->Init();
-		}
-		catch (EngineCode engineFailure)
-		{
-			assert(engineFailure && "Engine failed to initialize. Location: Engine::Start(), Init()");
-			return engineFailure;
-		}
-	}
-
-	// main game loop
-	while (isRunning && !closeRequested)
-	{
-		EngineCode code = NothingBad;
-
-		try
-		{
-			code = Update();
-		}
-		catch (EngineCode updateFailure)
-		{
-			assert(updateFailure && "Engine failed during update. Location: Engine::Start(), Update()");
-			return updateFailure;
-		}
-		if (code == CloseWindow)
-			break;
-
-		try
-		{
-			code = Render();
-		}
-		catch (EngineCode renderFailure)
-		{
-			assert(renderFailure && "Engine failed during render. Location: Engine::Start(), Render()");
-			return renderFailure;
-		}
-		if (code == CloseWindow)
-			break;
-	}
-
-	// stop engine
-	return Stop();
-}
-
-Engine::EngineCode Engine::Stop()
-{
-	try
-	{
-		ShutDown();
-	}
-	catch (EngineCode shutdown)
-	{
-		assert(shutdown && "Engine failed to shut down. Location: Engine::Stop(), ShutDown()");
-		return shutdown;
-	}
-
-	return EngineExit;
-}
-
-void Engine::EngineAddSystem(BaseSystem* sys)
-{
-	systems[systemCount++] = sys;
-}
-
-bool Engine::Paused()
-{
-	return paused;
-}
-
-void Engine::SetPause(bool pause)
-{
-	paused = pause;
-}
-
-// get the singleton instance
-Engine* Engine::GetInstance()
-{
-	if (instance == nullptr)
-	{
-		instance = new Engine();
-	}
-	return instance;
-}
-
-Engine::Engine() : isRunning(true), systemCount(0), systems(), paused(false), time(NULL), closeRequested(false)
-{
-}
-
-Engine::~Engine()
-{
-	if (instance != NULL)
-	{
-		delete instance;
-	}
-}
-
-Engine::EngineCode Engine::Update()
-{
-	float dt = Time::Instance().Delta();
-
-	// update all systems
-	for (int i = 0; i < systemCount; ++i)
-	{
-		try {
-			systems[i]->Update(dt);
-		}
-		catch (EngineCode updateFailure)
-		{
-			switch (updateFailure)
-			{
-			case CloseWindow:
-				return updateFailure;
-			default:
-				assert(updateFailure && "Engine failed during system update. Location: Engine::Update()");
-				throw(updateFailure);
-			}
-		}
-	}
-	return NothingBad;
-}
-
-Engine::EngineCode Engine::Render()
-{
-	// render all systems
-	for (int i = systemCount; ++i)
-	{
-		systems[i]->Render();
-	}
-	return NothingBad;
-}
-
-Engine::EngineCode Engine::ShutDown()
-{
-	// close all systems
-	for (int i = systemCount - 1; i >= 0; --i)
-	{
-		systems[i]->Close();
-	}
-
-	delete time;
-	AudioManager.Free();
-	return EngineExit;
-}
-
-// set flag to close game engine for whatever reasons you want
-void Engine::SetCloseRequest(bool close)
-{
-	closeRequested = close;
-}
-										</code></pre>
-								</section>
 							</article>
 
 						<!-- Work 2 -->
 							<article id="work3" class="panel">
 								<header>
-									<h1><strong><i>Refraction</i></strong></h1>
+									<h1><i>Refraction</i></h1>
 								</header>
 								<p>
 									You find yourself lost in the depths of a dungeon. It's dark, damp, and cramped.
@@ -939,18 +700,18 @@ if (ImGui::TreeNode("Import:"))
 									that tied together our stylization. And with that, we were done.
 									<br>
 									This project was a crucible of learning experiences:
-									<br><strong>Engine Architecture</strong> - Designing the engine entirely myself taught me how critical it is to align 
+									<br>Engine Architecture - Designing the engine entirely myself taught me how critical it is to align 
 									architecture with project requirements. The decision to use a singleton pattern, while simple and effective for a 
 									student project, highlighted the trade-offs inherent in design decisions.
-									<br><strong>Performance Optimization</strong> - Profiling tools and debugging performance bottlenecks were
+									<br>Performance Optimization - Profiling tools and debugging performance bottlenecks were
 									invaluable skills I developed. I learned that optimization is as much about identifying problems as it is about
 									knowing when to prioritize other tasks. 
-									<br><strong>Collaboration</strong> - While working in a small team led to more collaboration and effective communication,
+									<br>Collaboration - While working in a small team led to more collaboration and effective communication,
 									it also required me to take on multiple roles. I learned to balance my responsibilities and communicate effectively with
 									what was needed for the project. This was also one of the first projects where I had to work in parallel with other programmers.
 									It reinforced how important it was to provide clear documentation, maintain consistent and clean code, and communicate
 									regularly with the team.
-									<br><strong>Iterative Development</strong> - The necessity of balancing feature development with performance and usability 
+									<br>Iterative Development - The necessity of balancing feature development with performance and usability 
 									underscored the iterative nature of game development. As stated before, starting with and maintaining clean, well-documented 
 									code is far easier than fixing problems either. Additionally, especially when it came to tool and engine development, I often
 									had to go back and revise my work to accommodate new features or changes. This was a lesson in flexibility and adaptability.
@@ -1016,9 +777,9 @@ if (ImGui::TreeNode("Import:"))
 									<br>
 									<br>
 									<h3>Note: this is only a small portion of the code!</h3>
-									<strong>There is a lot of other checking and boring variable tweaking elsewhere, but we can at least see some basic construction
+									There is a lot of other checking and boring variable tweaking elsewhere, but we can at least see some basic construction
 										with these snippets.
-									</strong>
+									
 									<br>
 									<br>
 
