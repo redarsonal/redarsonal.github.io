@@ -66,7 +66,7 @@
 									<div class="row">
 										<div class="col-12">
 											<figure>
-												<a href="#work1" class="image fit"><img src="images/pic04.jpg" alt=""></a>
+												<a href="#work1" class="image fit"><img src="images/day1SHUTTLEFALL.gif" alt=""></a>
 												<figcaption><i>SHUTTLEFALL</i></figcaption>
 												<figcaption> Aliens, corrupt business practices, and a <i>massive</i> drill.</figcaption>
 											</figure>
@@ -127,7 +127,8 @@
 									<br>
 									<br>
 									<h2> My Focus </h2>
-									My main goal was to design the Market, a massive computer sitting in the greenhouse. The player could catch or breed moths and sell them here, where the main point was to get as much money and monopolize the moth market. On the outside, it seemed simple — take the moth, look up a price, and sell it for said price. However, we wanted to be unique. Since this game initially started as an economy simulator, we decided to put a little more thought into it. The breakdown of how a <i>single</i> moth's value gets calculated is as follows
+									<p>
+										My main goal was to design the Market, a massive computer sitting in the greenhouse. The player could catch or breed moths and sell them here, where the main point was to get as much money and monopolize the moth market. On the outside, it seemed simple — take the moth, look up a price, and sell it for said price. However, we wanted to be unique. Since this game initially started as an economy simulator, we decided to put a little more thought into it. The breakdown of how a <i>single</i> moth's value gets calculated is as follows
 									<br>
 									<br>
 									<ol>
@@ -142,6 +143,14 @@
 											subcategories, some rarer than others. Breeding or being lucky while outside can get you a higher quality — which of course, typically means more money as well.
 										</li>
 									</ol> 
+									<video controls width="100%">
+										<source src="images/MothGameShop.mp4" type="video/mp4">
+										Your browser does not support the video tag.
+									</video>
+									<video controls width="100%">
+										<source src="images/MothPriceGraph.mp4" type="video/mp4">
+										Your browser does not support the video tag.
+									</video>
 									It gets a little more in-depth than all that, but that's the overview. While I worked on this nearly entirely by myself, I still got some great help from our designers and other programmers to help me
  test and try new methods to get it just right.
 									<br>
@@ -666,7 +675,7 @@ if (ImGui::TreeNode("Import:"))
 									<h2>Designing the Level</h2>
 									<br>
 									This was a student project for a level design class, where we were given a few basic assets, few scripts for enemy AI and camera 
-									logic, and a blank state to work with. The goal was not only to crete a level with a clear beginning, middle, and end but also
+									logic, and a blank state to work with. The goal was not only to create a level with a clear beginning, middle, and end but also
 									to ensure that it was still a fun and engaging experience despite being largely procedurally generated. Most other students opted
 									for a design where the player had to traverse from one side of the level to another, as it was much easier to create a difficulty
 									curve and clear player progression. But I wanted to challenge myself.
@@ -690,7 +699,7 @@ if (ImGui::TreeNode("Import:"))
 									checks if another tile or the world border is in the way for each placement. If an obstacle was found, it would try another direction.
 									If that too fails, it backtracks and attempts another path using "branches" -- flags certain tiles have that allow the path to stem 
 									from, similar to a tree. This was somewhat inspired from other procedural generation algorithms such as cellular automata and 
-									recursive subdivision. The centeral spawn placements acts as a "seed", similar to what is used in cellular automata, making sure
+									recursive subdivision. The central spawn placements acts as a "seed", similar to what is used in cellular automata, making sure
 									that the paths organically grow from a specific point. The branching corridors are also similar to recursive subdivision, where 
 									the paths were segmented into smaller interconnected paths. I had to ensure none of the paths didn't overlap or connect oddly, 
 									such as touching parallel paths. This took extensive tweaking and testing to get right. I never did get it exactly the way I wanted,
@@ -850,10 +859,10 @@ bool GenerateSpiralPattern(ref int x, ref int y, ref Vector2Int direction)
 									<h2>Overall design</h2>
 									<br>
 									To make each corner of the dungeon feel distinct, I designed them as unique biomes, each with its own enemy types, powerups, and
-									different kinds of corridor designs. The central area inbetween the biomes, which is largely meant to be both a gentle beginning
-									and a break inbetween bosses, was relatively neutral. Weaker enemies with little to no power-ups. This was to prepare the player 
+									different kinds of corridor designs. The central area in-between the biomes, which is largely meant to be both a gentle beginning
+									and a break in-between bosses, was relatively neutral. Weaker enemies with little to no power-ups. This was to prepare the player 
 									for their adventure -- getting used to combat, learning how enemies act, the controls, etc. It was meant to encourage exploration 
-									as well, proding the curiousity of the player to keep going in whatever direction they choose. Additionally, since the player
+									as well, prodding the curiosity of the player to keep going in whatever direction they choose. Additionally, since the player
 									could choose any corner to explore first, I designed it so that for every boss killed, the remaining bosses and enemies 
 									would get stronger. This helps defeat any linearity, but also ensures that the player is always challenged.
 									<br>
@@ -863,8 +872,8 @@ bool GenerateSpiralPattern(ref int x, ref int y, ref Vector2Int direction)
 									had spiral-like patterns, which allow the player to lose the enemy through line of sight if the player needs to recover. 
 									I also attempted to make the power-ups reflect this too! Fast enemies were more likely to drop speed-boosts, while tanks were
 									more likely to drop health-boosts. This allowed players to adapt their strategy based on the biome they were in. Tank enemies
-									too strong? Go kill some spread enemies for some extra damage! This appraoched helped ensure the procedural generation
-									didn't feel too static; every playthrough felt fresh yet still maintained some sort of consistentcy.
+									too strong? Go kill some spread enemies for some extra damage! This approached helped ensure the procedural generation
+									didn't feel too static; every playthrough felt fresh yet still maintained some sort of consistency.
 									<br>
 									Another important aspect of this level design was the gameplay arc -- the pacing and progression of challenges throughout 
 									the level. I wanted to implement a false sense of failure for the hook. Players start with a single heart, no powerups, and
@@ -1027,6 +1036,10 @@ void ApplyBossBuffs(WeaponLogic weapon)
 									With the grip of a powerful corporation around your neck, demanding you mine resources for their profit and to relieve your debt, 
 									you must land your ship on an alien planet and drill deep down, careful to not make too much noise. Will you ever, truly, be free?
 									<br>
+									<div class="gallery">
+										<a href="#pic05" class="thumbnail"><img src="images/shakeSHUTTLEFALL.gif" alt="The descent."></a>
+									</div>
+									<br>
 									This is one of my more recent student projects that I am currently apart of. I joined fairly recently, yet I already am working towards
 									goals that push me as a programmer. I am immensely grateful that my name is becoming known amongst my peers, as it didn't take long for me to find 
 									a team and be hired, let alone be given an opportunity to design and immediately start work on this project. Thanks to my work on the previous projects,
@@ -1045,6 +1058,11 @@ void ApplyBossBuffs(WeaponLogic weapon)
 									faster, and the quota is also higher. Depending on the "difficulty" of these conditions, the player can get a higher paycheck at the end of the
 									day, which can be used to upgrade the ship, buy new addons, or even pay off the debt. 
 									<br>
+									<img src="images/sunnyScreenGif.gif" alt="A sunny day."></a>
+									<br>
+									<br>
+									<img src="images/rainyScreenGif.gif" alt="A rainy day."></a>
+									<br>
 									This largely has been implemented, though with playtesting, we will be experimenting on more dynamics. I purposely programmed the system
 									to be easily modifiable, as well as incredibly simple to add more modifications to nearly anything we want. While there are really only 
 									three factors that get modified, it could be expanded to include more, such as faster/slower repair speed, slower/faster drill speed, 
@@ -1053,7 +1071,7 @@ void ApplyBossBuffs(WeaponLogic weapon)
 									at their own difficulty. 
 									<br>
 									We plan on expanding this with time, but also are seeking to add more systems that could integrate this more. Maybe upgrades that allow
-									the player to "encourage" certain weather events, or cassets (tools that the player can buy that will add more permanent modifiers) that 
+									the player to "encourage" certain weather events, or cassettes (tools that the player can buy that will add more permanent modifiers) that 
 									could reuse these modifications. 
 									<br>
 									I am deeply excited to continue working on this project, as not only has this been a great learning and teaching experience, but it also
