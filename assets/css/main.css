@@ -1985,15 +1985,15 @@ body::before {
 
 			#main > .panel.intro {
 				padding: 0;
-				height: 20em;
+				height: auto;
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
 				display: flex;
-				-moz-flex-direction: row;
-				-webkit-flex-direction: row;
-				-ms-flex-direction: row;
-				flex-direction: row;
+				-moz-flex-direction: column;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
 				-moz-align-items: center;
 				-webkit-align-items: center;
 				-ms-align-items: center;
@@ -2083,11 +2083,15 @@ body::before {
 						padding-right: 0.25em;
 					}
 
-				#main > .panel.intro header {
-					-moz-flex-grow: 1;
-					-webkit-flex-grow: 1;
-					-ms-flex-grow: 1;
-					flex-grow: 1;
+#main > .panel.intro .pic {
+				display: none;
+			}
+
+			#main > .panel.intro header {
+				-moz-flex-grow: 0;
+				-webkit-flex-grow: 0;
+				-ms-flex-grow: 0;
+				flex-grow: 0;
 					-moz-flex-shrink: 1;
 					-webkit-flex-shrink: 1;
 					-ms-flex-shrink: 1;
@@ -2322,12 +2326,54 @@ code {
 	z-index: 9999;
 }
 
-/* Remove additional formatting for homepage */
+			#home figure {
+				max-width: 600px;
+				width: 90%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			#home figure img {
+				width: 100%;
+				height: auto;
+			}
+
+			#home #work section {
+				max-width: 800px;
+				width: 100%;
+				margin: 0 auto;
+			}
 #home {
 	background: none !important;
 	box-shadow: none !important;
 	padding: 0 !important;
 	margin: 0 !important;
+	display: block !important;
+	width: 100% !important;
+	max-height: none !important;
+	min-height: auto !important;
+}
+
+#home header {
+	display: block !important;
+	width: 100% !important;
+}
+
+#home #work {
+	display: block !important;
+	width: 100% !important;
+	clear: both;
+}
+
+/* Override main height constraints for home panel */
+#main {
+	overflow: visible !important;
+}
+
+#main.show-home,
+#main > #home {
+	max-height: none !important;
+	min-height: auto !important;
 }
 
 /* Blinking Cursor */

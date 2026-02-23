@@ -246,6 +246,7 @@
 		light.style.top = event.pageY + 'px';
 	});
 
+	/* Boot sequence typing effect (disabled)
 	document.addEventListener('DOMContentLoaded', function() {
 		const bootText = `> Starting boot sequence...
 	  > Performing Power-On Self-Test (POST)...
@@ -259,40 +260,41 @@
 	  > Welcome! Feel free to check out my work, read about me, or reach out!`.trim();
 	  
 		const bootContainer = document.getElementById("boot-sequence");
-		bootContainer.innerHTML = ""; // Clear previous content
-		let bootIndex = 0;
-		const bootSpeed = 0.2; // typing speed
+		if (bootContainer) {
+			bootContainer.innerHTML = ""; // Clear previous content
+			let bootIndex = 0;
+			const bootSpeed = 0.01; // typing speed
 	  
-		function typeBootSequence() {
-		  if (bootIndex < bootText.length) {
-			const char = bootText.charAt(bootIndex);
-			if (char === '\n') {
-			  bootContainer.innerHTML += '<br>';
-			  // Optionally, skip any extra spaces or tabs right after a newline:
-			  while (
-				bootText.charAt(bootIndex + 1) === ' ' ||
-				bootText.charAt(bootIndex + 1) === '\t'
-			  ) {
+			function typeBootSequence() {
+			  if (bootIndex < bootText.length) {
+				const char = bootText.charAt(bootIndex);
+				if (char === '\n') {
+				  bootContainer.innerHTML += '<br>';
+				  while (
+					bootText.charAt(bootIndex + 1) === ' ' ||
+					bootText.charAt(bootIndex + 1) === '\t'
+				  ) {
+					bootIndex++;
+				  }
+				} else {
+				  bootContainer.innerHTML += char;
+				}
 				bootIndex++;
+				setTimeout(typeBootSequence, bootSpeed);
+			  } else {
+				setTimeout(() => {
+				  document.getElementById("black-screen").style.opacity = 0;
+				  setTimeout(() => {
+					document.getElementById("black-screen").style.display = 'none';
+				  }, 1000);
+				}, 2000);
 			  }
-			} else {
-			  bootContainer.innerHTML += char;
 			}
-			bootIndex++;
-			setTimeout(typeBootSequence, bootSpeed);
-		  } else {
-			// Finish up (fade out, etc.)
-			setTimeout(() => {
-			  document.getElementById("black-screen").style.opacity = 0;
-			  setTimeout(() => {
-				document.getElementById("black-screen").style.display = 'none';
-			  }, 1000);
-			}, 2000);
-		  }
-		}
 	  
-		setTimeout(typeBootSequence, 1000); // Start after 1 second
-	  });	  
+			setTimeout(typeBootSequence, 1000); // Start after 1 second
+		}
+	});
+	*/
 
 	// Function to create and animate CRT line effect
 	function createCrtLine() {

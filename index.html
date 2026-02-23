@@ -15,11 +15,13 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 	</head>
 	<body class="is-preload">
+			<!-- Boot sequence block (commented out) -->
+			<!--
 			<div id="black-screen">
 				<p id="boot-sequence"></p>
 			</div>
+			-->
 		<div class="mouse-light" id="mouse-light"></div>
-
 		<!-- Wrapper-->
 			<div id="wrapper">
 
@@ -38,79 +40,74 @@
 							<article id="home" class="panel intro">
 								<header>
 									<h1 class="blur-text">TayLee Young<span class="blinking-cursor">|</span></h1>
-											<p>Systems Programmer and Game Designer</p>
+											<p>Systems Programmer and Technical Game Designer</p>
 										<!--<img src="images/me.jpg" alt="" /> -->
 										<!-- ASCII Art Container -->
 										<pre id="ascii-art-container"></pre>
 								</header>
-							</article>
 
-						<!-- Work -->
-							<article id="work" class="panel">
-								<header>
-									<h2 class="blur-text">Featured Work<span class="blinking-cursor">|</span></h2>
-								</header>
-								<p>
-									Here is some of my most recent work! Some are still in production, some are finished.
-									This work showcases my skills in programming, game design, and systems. If you would to take a peek at my
-									resume, you can find it here, or over in my about me page. 
-									<br>
-									<br>
-									<!-- Projects that I have lost access to their original source code, as well as commentary
-									on my experiences in this field can be found within the <a href="#blog">Blog</a> section, so feel free to 
-									check that out as well! -->
-									I will be adding a blog section soon, which covers some other projects I have worked on, as well as my
-									thoughts on other related technological topics, so stay tuned for that!
-								</p>
-								<section>
-									<div class="row">
-										<div class="col-12">
-											<figure>
-												<a href="#work1" class="image fit"><img src="images/day1SHUTTLEFALL.gif" alt=""></a>
-												<figcaption><i>SHUTTLEFALL</i></figcaption>
-												<figcaption> Aliens, corrupt business practices, and a <i>massive</i> drill.</figcaption>
-											</figure>
+								<!-- Work Section -->
+								<div id="work" style="margin-top: 3rem;">
+									<header style="text-align: center;">
+										<h2 class="blur-text">Featured Work<span class="blinking-cursor">|</span></h2>
+									</header>
+									<section style="max-width: 1200px; margin: 0 auto;">
+										<!-- SHUTTLEFALL -->
+										<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
+											<div style="flex: 0 0 500px;">
+												<a href="#work1"><img src="images/day1SHUTTLEFALL.gif" alt="" style="width: 100%; height: auto; display: block;"></a>
+												<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;"><i>SHUTTLEFALL</i></p>
+											</div>
+											<div style="flex: 1; margin-top: 4rem;">
+												<p>Aliens, corrupt business practices, and a <i>massive</i> drill.</p>
+											</div>
 										</div>
-										<div class="col-12">
-											<figure>
-												<a href="#work2" class="image fit"><img src="images/mothTitleScreen.gif" alt=""></a>
-												<figcaption><i>Moth 2: The Mothening</i></figcaption>
-												<figcaption>From fluttering wings to fortune — grow your moth empire!</figcaption>
-											</figure>
+
+										<!-- Moth 2: The Mothening -->
+										<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
+											<div style="flex: 0 0 500px;">
+												<a href="#work2"><img src="images/mothTitleScreen.gif" alt="" style="width: 110%; height: auto; display: block;"></a>
+												<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;"><i>Moth 2: The Mothening</i></p>
+											</div>
+											<div style="flex: 1; margin-top: 4rem;">
+												<p>From fluttering wings to fortune — grow your moth empire!</p>
+											</div>
 										</div>
-										<div class="col-12">
-											<figure>
-												<a href="#work3" class="image fit"><img src="images/refractionTitleScreen.gif" alt=""></a>
-												<figcaption><i>Refraction</i></figcaption>
-												<figcaption>A custom engine running CPU-based pixel-by-pixel light calculations? 
-													How hard can that be?
-												</figcaption>
-											</figure>
+
+										<!-- Refraction -->
+										<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
+											<div style="flex: 0 0 500px;">
+												<a href="#work3"><img src="images/refractionTitleScreen.gif" alt="" style="width: 110%; height: auto; display: block;"></a>
+												<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;"><i>Refraction</i></p>
+											</div>
+											<div style="flex: 1; margin-top: 4rem;">
+												<p>A custom engine running CPU-based pixel-by-pixel light calculations? How hard can that be?</p>
+											</div>
 										</div>
-										<div class="col-12">
-											<figure>
-												<a href="#work4" class="image fit"><img src="images/PDthumbnail.png" alt=""></a>
-												<figcaption><i>Procedurally Generated Dungeon</i></figcaption>
-												<figcaption>What happens when you try to design a playable level using
-													entirely procedurally generated layouts?
-												</figcaption>
-											</figure>
+
+										<!-- Procedurally Generated Dungeon -->
+										<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
+											<div style="flex: 0 0 500px;">
+												<a href="#work4"><img src="images/PDthumbnail.png" alt="" style="width: 75%; height: auto; display: block;"></a>
+												<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;"><i>Procedurally Generated Dungeon</i></p>
+											</div>
+											<div style="flex: 1; margin-top: 4rem;">
+												<p>What happens when you try to design a playable level using entirely procedurally generated layouts?</p>
+											</div>
 										</div>
-									</div>
-								</section>
+									</section>
+								</div>
 							</article>
 
 							<style>
 								figure {
-									margin-bottom: 10rem;
+									text-align: center;
 								}
 							
 								figcaption {
-									margin-top: 0.5rem;
 									text-align: center;
 								}
 							</style>
-
 						<!-- Work 1 -->
 							<article id="work2" class="panel">
 								<header>
