@@ -1,3 +1,15 @@
+/*
+	Astral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+	This file is ONLY loaded when JavaScript is disabled.
+	Its job is to make all panels visible at once, since the JS
+	panel-switching system won't be running.
+
+	Do NOT add general styling here — it belongs in main.scss.
+*/
+
 @import 'libs/vars';
 @import 'libs/functions';
 @import 'libs/mixins';
@@ -5,52 +17,41 @@
 @import 'libs/breakpoints';
 @import 'libs/html-grid';
 
-/*
-	Astral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+/* Force wrapper visible (JS normally fades it in on load). */
+#wrapper {
+	opacity: 1 !important;
+}
 
-/* Wrapper */
+/* Show all nav links at full opacity without hover/active effects. */
+#nav {
+	a {
+		opacity: 1;
 
-	#wrapper {
-		opacity: 1 !important;
-	}
+		&:before,
+		&:after {
+			display: none;
+		}
 
-/* Nav */
+		span {
+			top: 0;
+			opacity: 1;
 
-	#nav {
-		a {
-			opacity: 1.0;
-
-			&:before,
 			&:after {
 				display: none;
 			}
-
-			span {
-				top: 0;
-				opacity: 1.0;
-
-				&:after {
-					display: none;
-				}
-			}
 		}
 	}
+}
 
-/* Main */
+/* Show all panels stacked, since JS won't be hiding/showing them. */
+#main {
+	> .panel {
+		display: block !important;
+		opacity: 1 !important;
+		margin-bottom: 2em;
 
-	#main {
-		background: none;
-		box-shadow: none;
-
-		> .panel {
-			background: #ffffff;
-			margin-bottom: 2em;
-
-			&:last-child {
-				margin-bottom: 0;
-			}
+		&:last-child {
+			margin-bottom: 0;
 		}
 	}
+}

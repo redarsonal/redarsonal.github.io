@@ -2343,37 +2343,13 @@ code {
 				width: 100%;
 				margin: 0 auto;
 			}
-#home {
-	background: none !important;
-	box-shadow: none !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	display: block !important;
-	width: 100% !important;
-	max-height: none !important;
-	min-height: auto !important;
-}
-
-#home header {
-	display: block !important;
-	width: 100% !important;
-}
-
-#home #work {
-	display: block !important;
-	width: 100% !important;
-	clear: both;
-}
-
-/* Override main height constraints for home panel */
-#main {
-	overflow: visible !important;
-}
-
-#main.show-home,
-#main > #home {
-	max-height: none !important;
-	min-height: auto !important;
+			
+/* The home panel uses flex-column layout and can be taller
+   than other panels. Let it size naturally — the panel system
+   handles visibility via show/hide, not overflow clipping. */
+#main > .panel.intro {
+	height: auto;
+	overflow: visible;
 }
 
 /* Blinking Cursor */

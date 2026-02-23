@@ -2,83 +2,45 @@
 	Astral by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+	This file is ONLY loaded when JavaScript is disabled.
+	Its job is to make all panels visible at once, since the JS
+	panel-switching system won't be running.
+
+	Do NOT add general styling here — it belongs in main.css.
 */
 
-/* Wrapper */
+/* Force wrapper visible (JS normally fades it in on load). */
+#wrapper {
+	opacity: 1 !important;
+}
 
-	#wrapper {
-		opacity: 1 !important;
+/* Show all nav links at full opacity without hover/active effects. */
+#nav a {
+	opacity: 1;
+}
+
+	#nav a:before,
+	#nav a:after {
+		display: none;
 	}
 
-/* Nav */
-
-	#nav a {
-		opacity: 1.0;
+	#nav a span {
+		top: 0;
+		opacity: 1;
 	}
 
-		#nav a:before, #nav a:after {
+		#nav a span:after {
 			display: none;
 		}
 
-		#nav a span {
-			top: 0;
-			opacity: 1.0;
-		}
+/* Show all panels stacked, since JS won't be hiding/showing them. */
+#main > .panel {
+	display: block !important;
+	opacity: 1 !important;
+	margin-bottom: 2em;
+}
 
-			#nav a span:after {
-				display: none;
-			}
-
-/* Main */
-
-	#main {
-		background: none;
-		box-shadow: none;
+	#main > .panel:last-child {
+		margin-bottom: 0;
 	}
-
-		#main > .panel {
-			background: #ffffff;
-			margin-bottom: 2em;
-		}
-
-			#main > .panel:last-child {
-				margin-bottom: 0;
-			}
-
-/* Apply Eirian font to body and relevant text elements */
-body, input, textarea, select, h1, h2, h3, h4, h5, h6, p, a, blockquote, code, pre, figcaption, span, label, legend, table, th, td, caption, dt, dd, li {
-	font-family: 'Eirian', sans-serif;
-	font-weight: 300;
-	color: #d0f0c0; /* Greenish white color */
-	font-size: 20pt;
-	line-height: 1.75em;
-	text-align: center; /* Center text */
-	text-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Add slight blur for retro terminal look */
-}
-
-/* Ensure headers are unbolded and unitalicized */
-h1, h2, h3, h4, h5, h6 {
-	font-weight: 300; /* Match the rest of the text */
-	font-style: normal; /* Remove italics */
-	color: #d0f0c0; /* Match the rest of the text */
-	text-shadow: 0 0 2px rgba(0, 255, 0, 0.5); /* Add slight blur for retro terminal look */
-}
-
-/* Add blur effect to specific header text */
-.blur-text {
-	text-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Add slight blur for retro terminal look */
-}
-
-/* Override for code snippets */
-pre, pre code {
-    font-family: Consolas, "Courier New", monospace;  /* Use a standard monospaced font */
-    color: #000 !important;                           /* Black text for readability */
-    text-align: left !important;                      /* Left aligned text */
-    white-space: pre !important;                      /* Preserve whitespace exactly */
-    text-shadow: none !important;                     /* Remove text shadow */
-    font-size: 16pt;                                  /* Adjust font size if needed */
-    background-color: #f5f5f5;                        /* Optional: Light background for contrast */
-    padding: 1em;                                     /* Optional: Padding for better spacing */
-    border: 1px solid #ccc;                           /* Optional: Border to frame the code */
-    overflow-x: auto;                                 /* Ensure horizontal scrolling if needed */
-}

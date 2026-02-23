@@ -6,51 +6,60 @@
 
 (function($) {
 
-	var $window = $(window),
-		$body = $('body'),
-		$wrapper = $('#wrapper'),
-		$main = $('#main'),
-		$panels = $main.children('.panel'),
-		$nav = $('#nav'), $nav_links = $nav.children('a');
+	var $window   = $(window),
+		$body     = $('body'),
+		$wrapper  = $('#wrapper'),
+		$main     = $('#main'),
+		$panels   = $main.children('.panel'),
+		$nav      = $('#nav'),
+		$nav_links = $nav.children('a');
 
 	// Breakpoints.
-		breakpoints({
-			xlarge:  [ '1281px',  '1680px' ],
-			large:   [ '981px',   '1280px' ],
-			medium:  [ '737px',   '980px'  ],
-			small:   [ '361px',   '736px'  ],
-			xsmall:  [ null,      '360px'  ]
-		});
+	breakpoints({
+		xlarge: [ '1281px', '1680px' ],
+		large:  [ '981px',  '1280px' ],
+		medium: [ '737px',  '980px'  ],
+		small:  [ '361px',  '736px'  ],
+		xsmall: [ null,     '360px'  ]
+	});
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+	// Remove preload class after page load to trigger entry animations.
+	$window.on('load', function() {
+		window.setTimeout(function() {
+			$body.removeClass('is-preload');
+		}, 100);
+	});
 
-	// Nav.
-		$nav_links
-			.on('click', function(event) {
+	// Nav: handle clicks on nav links that target panels.
+	$nav_links.on('click', function(event) {
+		var href = $(this).attr('href');
 
-				var href = $(this).attr('href');
+		// Not a panel link? Let the browser handle it normally.
+		if (href.charAt(0) !== '#' || $panels.filter(href).length === 0)
+			return;
 
-				// Not a panel link? Bail.
-					if (href.charAt(0) != '#'
-					||	$panels.filter(href).length == 0)
-						return;
+		event.preventDefault();
+		event.stopPropagation();
 
-				// Prevent default.
-					event.preventDefault();
-					event.stopPropagation();
+		if (window.location.hash !== href)
+			window.location.hash = href;
+	});
 
-				// Change panels.
-					if (window.location.hash != href)
-						window.location.hash = href;
+	// Intercept any in-page anchor click that targets a panel.
+	// Prevents default browser jump-scroll and uses hash-based panel switching instead.
+	$(document).on('click', 'a[href^="#"]', function(event) {
+		var href = $(this).attr('href');
 
-			});
+		if (href && href.charAt(0) === '#' && $panels.filter(href).length > 0) {
+			event.preventDefault();
+			event.stopPropagation();
 
-	// Highlight active tab
+			if (window.location.hash !== href)
+				window.location.hash = href;
+		}
+	});
+
+	// Highlight the active nav tab on click.
 	$nav_links.on('click', function() {
 		$nav_links.removeClass('active');
 		$(this).addClass('active');
@@ -58,255 +67,166 @@
 
 	// Panels.
 
-		// Initialize.
-			(function() {
+	// Initialize: show the panel matching the current hash, or default to the first.
+	(function() {
+		var $panel, $link;
 
-				var $panel, $link;
-
-				// Get panel, link.
-					if (window.location.hash) {
-
-				 		$panel = $panels.filter(window.location.hash);
-						$link = $nav_links.filter('[href="' + window.location.hash + '"]');
-
-					}
-
-				// No panel/link? Default to first.
-					if (!$panel
-					||	$panel.length == 0) {
-
-						$panel = $panels.first();
-						$link = $nav_links.first();
-
-					}
-
-				// Deactivate all panels except this one.
-					$panels.not($panel)
-						.addClass('inactive')
-						.hide();
-
-				// Activate link.
-					$link
-						.addClass('active');
-
-				// Reset scroll.
-					$window.scrollTop(0);
-
-			})();
-
-		// Hashchange event.
-			$window.on('hashchange', function(event) {
-
-				var $panel, $link;
-
-				// Get panel, link.
-					if (window.location.hash) {
-
-				 		$panel = $panels.filter(window.location.hash);
-						$link = $nav_links.filter('[href="' + window.location.hash + '"]');
-
-						// No target panel? Bail.
-							if ($panel.length == 0)
-								return;
-
-					}
-
-				// No panel/link? Default to first.
-					else {
-
-						$panel = $panels.first();
-						$link = $nav_links.first();
-
-					}
-
-				// Deactivate all panels.
-					$panels.addClass('inactive');
-
-				// Deactivate all links.
-					$nav_links.removeClass('active');
-
-				// Activate target link.
-					$link.addClass('active');
-
-				// Set max/min height.
-					$main
-						.css('max-height', $main.height() + 'px')
-						.css('min-height', $main.height() + 'px');
-
-				// Delay.
-					setTimeout(function() {
-
-						// Hide all panels.
-							$panels.hide();
-
-						// Show target panel.
-							$panel.show();
-
-						// Set new max/min height.
-							$main
-								.css('max-height', $panel.outerHeight() + 'px')
-								.css('min-height', $panel.outerHeight() + 'px');
-
-						// Reset scroll.
-							$window.scrollTop(0);
-
-						// Delay.
-							window.setTimeout(function() {
-
-								// Activate target panel.
-									$panel.removeClass('inactive');
-
-								// Clear max/min height.
-									$main
-										.css('max-height', '')
-										.css('min-height', '');
-
-								// IE: Refresh.
-									$window.triggerHandler('--refresh');
-
-								// Unlock.
-									locked = false;
-
-							}, (breakpoints.active('small') ? 0 : 500));
-
-					}, 250);
-
-			});
-
-	// IE: Fixes.
-		if (browser.name == 'ie') {
-
-			// Fix min-height/flexbox.
-				$window.on('--refresh', function() {
-
-					$wrapper.css('height', 'auto');
-
-					window.setTimeout(function() {
-
-						var h = $wrapper.height(),
-							wh = $window.height();
-
-						if (h < wh)
-							$wrapper.css('height', '100vh');
-
-					}, 0);
-
-				});
-
-				$window.on('resize load', function() {
-					$window.triggerHandler('--refresh');
-				});
-
-			// Fix intro pic.
-				$('.panel.intro').each(function() {
-
-					var $pic = $(this).children('.pic'),
-						$img = $pic.children('img');
-
-					$pic
-						.css('background-image', 'url(' + $img.attr('src') + ')')
-						.css('background-size', 'cover')
-						.css('background-position', 'center');
-
-					$img
-						.css('visibility', 'hidden');
-
-				});
-
+		if (window.location.hash) {
+			$panel = $panels.filter(window.location.hash);
+			$link  = $nav_links.filter('[href="' + window.location.hash + '"]');
 		}
 
-	// Function to display code snippets
-	document.addEventListener('DOMContentLoaded', function() {
-		const codeBlocks = document.querySelectorAll('pre code');
-		codeBlocks.forEach((block) => {
-			hljs.highlightBlock(block);
+		// No valid panel found — fall back to first.
+		if (!$panel || $panel.length === 0) {
+			$panel = $panels.first();
+			$link  = $nav_links.first();
+		}
+
+		// Hide all other panels.
+		$panels.not($panel).addClass('inactive').hide();
+
+		// Mark the matching nav link as active.
+		$link.addClass('active');
+
+		$window.scrollTop(0);
+	})();
+
+	// Hashchange: transition to the newly targeted panel.
+	$window.on('hashchange', function() {
+		var $panel, $link;
+
+		if (window.location.hash) {
+			$panel = $panels.filter(window.location.hash);
+			$link  = $nav_links.filter('[href="' + window.location.hash + '"]');
+
+			// Hash doesn't match any panel? Bail.
+			if ($panel.length === 0)
+				return;
+		} else {
+			$panel = $panels.first();
+			$link  = $nav_links.first();
+		}
+
+		// Deactivate all panels and nav links.
+		$panels.addClass('inactive');
+		$nav_links.removeClass('active');
+
+		// Activate the target nav link.
+		$link.addClass('active');
+
+		// Lock the main container height during transition to prevent layout jump.
+		// Skip locking when leaving the home/intro panel — its content is much taller
+		// than other panels and the locked value causes a phantom gap on the target panel.
+		var leavingIntro = $panels.filter(':visible').hasClass('intro');
+		if (!leavingIntro) {
+			$main
+				.css('max-height', $main.height() + 'px')
+				.css('min-height', $main.height() + 'px');
+		}
+
+		setTimeout(function() {
+			$panels.hide();
+			$panel.show();
+
+			// Resize container to fit new panel.
+			$main
+				.css('max-height', $panel.outerHeight() + 'px')
+				.css('min-height', $panel.outerHeight() + 'px');
+
+			$window.scrollTop(0);
+
+			window.setTimeout(function() {
+				$panel.removeClass('inactive');
+
+				// Release fixed height so panel can grow/shrink freely.
+				$main
+					.css('max-height', '')
+					.css('min-height', '');
+
+				$window.triggerHandler('--refresh');
+
+			}, breakpoints.active('small') ? 0 : 500);
+
+		}, 250);
+	});
+
+	// IE fixes.
+	if (browser.name === 'ie') {
+
+		// Fix min-height / flexbox layout bug in IE.
+		$window.on('--refresh', function() {
+			$wrapper.css('height', 'auto');
+
+			window.setTimeout(function() {
+				var h  = $wrapper.height(),
+					wh = $window.height();
+
+				if (h < wh)
+					$wrapper.css('height', '100vh');
+			}, 0);
 		});
 
-		// Toggle code snippet visibility
-		const toggles = document.querySelectorAll('.code-toggle');
-		toggles.forEach((toggle) => {
+		$window.on('resize load', function() {
+			$window.triggerHandler('--refresh');
+		});
+
+		// IE fallback: use background-image instead of <img> inside .pic,
+		// since IE has flexbox bugs with images inside certain containers.
+		$('.panel.intro').each(function() {
+			var $pic = $(this).children('.pic'),
+				$img = $pic.children('img');
+
+			$pic
+				.css('background-image',    'url(' + $img.attr('src') + ')')
+				.css('background-size',     'cover')
+				.css('background-position', 'center');
+
+			$img.css('visibility', 'hidden');
+		});
+	}
+
+	// Syntax highlighting: applied to all <pre><code> blocks via highlight.js.
+	document.addEventListener('DOMContentLoaded', function() {
+		document.querySelectorAll('pre code').forEach(function(block) {
+			hljs.highlightElement(block); // highlightBlock() is deprecated; use highlightElement()
+		});
+
+		// Toggle visibility of code snippet sections.
+		// Expects: <button class="code-toggle"><img ...></button><div>...</div>
+		document.querySelectorAll('.code-toggle').forEach(function(toggle) {
 			toggle.addEventListener('click', function() {
-				const codeSection = this.nextElementSibling;
-				const icon = this.querySelector('img');
-				if (codeSection.style.display === 'none' || codeSection.style.display === '') {
-					codeSection.style.display = 'block';
-					icon.style.transform = 'rotate(180deg)';
-				} else {
-					codeSection.style.display = 'none';
-					icon.style.transform = 'rotate(0deg)';
-				}
+				var section = this.nextElementSibling;
+				var icon    = this.querySelector('img');
+				var hidden  = section.style.display === 'none' || section.style.display === '';
+
+				section.style.display    = hidden ? 'block' : 'none';
+				icon.style.transform     = hidden ? 'rotate(180deg)' : 'rotate(0deg)';
 			});
 		});
 	});
 
-	// Function to update the position of the light effect
+	// Mouse-light effect: moves a radial gradient highlight to follow the cursor.
 	document.addEventListener('mousemove', function(event) {
-		const light = document.getElementById('mouse-light');
-		light.style.left = event.pageX + 'px';
-		light.style.top = event.pageY + 'px';
-	});
-
-	/* Boot sequence typing effect (disabled)
-	document.addEventListener('DOMContentLoaded', function() {
-		const bootText = `> Starting boot sequence...
-	  > Performing Power-On Self-Test (POST)...
-	  > [Booting...]
-	  > [Memory OK] [CPU OK] [Disk OK]
-	  > Loading custom environment...
-	  > Initializing user interface...
-	  > Loading bootloader...
-	  > System boot complete.
-	  
-	  > Welcome! Feel free to check out my work, read about me, or reach out!`.trim();
-	  
-		const bootContainer = document.getElementById("boot-sequence");
-		if (bootContainer) {
-			bootContainer.innerHTML = ""; // Clear previous content
-			let bootIndex = 0;
-			const bootSpeed = 0.01; // typing speed
-	  
-			function typeBootSequence() {
-			  if (bootIndex < bootText.length) {
-				const char = bootText.charAt(bootIndex);
-				if (char === '\n') {
-				  bootContainer.innerHTML += '<br>';
-				  while (
-					bootText.charAt(bootIndex + 1) === ' ' ||
-					bootText.charAt(bootIndex + 1) === '\t'
-				  ) {
-					bootIndex++;
-				  }
-				} else {
-				  bootContainer.innerHTML += char;
-				}
-				bootIndex++;
-				setTimeout(typeBootSequence, bootSpeed);
-			  } else {
-				setTimeout(() => {
-				  document.getElementById("black-screen").style.opacity = 0;
-				  setTimeout(() => {
-					document.getElementById("black-screen").style.display = 'none';
-				  }, 1000);
-				}, 2000);
-			  }
-			}
-	  
-			setTimeout(typeBootSequence, 1000); // Start after 1 second
+		var light = document.getElementById('mouse-light');
+		if (light) {
+			light.style.left = event.pageX + 'px';
+			light.style.top  = event.pageY + 'px';
 		}
 	});
-	*/
 
-	// Function to create and animate CRT line effect
+	// CRT scanline effect: creates a single animated line that loops at a random interval.
 	function createCrtLine() {
-		const crtLine = document.createElement('div');
+		var crtLine = document.createElement('div');
 		crtLine.classList.add('crt-line');
 		document.body.appendChild(crtLine);
 
 		function moveCrtLine() {
+			// Force reflow to restart the CSS animation cleanly each cycle.
 			crtLine.style.animation = 'none';
-			crtLine.offsetHeight; // Trigger reflow
+			crtLine.offsetHeight; // intentional reflow trigger
 			crtLine.style.animation = '';
-			setTimeout(moveCrtLine, Math.random() * 4000 + 1000); // Wait 1-5 seconds
+
+			setTimeout(moveCrtLine, Math.random() * 4000 + 1000);
 		}
 
 		moveCrtLine();

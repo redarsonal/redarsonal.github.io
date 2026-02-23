@@ -4,117 +4,168 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="en">
 	<head>
-		<title>Welcome!</title>
+		<title>TayLee Young — Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 	</head>
 	<body class="is-preload">
-			<!-- Boot sequence block (commented out) -->
-			<!--
-			<div id="black-screen">
-				<p id="boot-sequence"></p>
-			</div>
-			-->
+
 		<div class="mouse-light" id="mouse-light"></div>
-		<!-- Wrapper-->
-			<div id="wrapper">
 
-				<!-- Nav -->
-					<nav id="nav">
-						<a href="#">Home</a>
-						<a href="#work">Work</a>
-						<a href="#contact">Contact</a>
-						<a href="#about-me">Me</a>
-					</nav>
+		<div id="wrapper">
 
-				<!-- Main -->
-					<div id="main">
+			<!-- Nav -->
+			<nav id="nav">
+				<a href="#">Home</a>
+				<a href="#contact">Contact</a>
+				<a href="#about-me">Me</a>
+			</nav>
 
-						<!-- Me -->
-							<article id="home" class="panel intro">
-								<header>
-									<h1 class="blur-text">TayLee Young<span class="blinking-cursor">|</span></h1>
-											<p>Systems Programmer and Technical Game Designer</p>
-										<!--<img src="images/me.jpg" alt="" /> -->
-										<!-- ASCII Art Container -->
-										<pre id="ascii-art-container"></pre>
-								</header>
+			<div id="main">
 
-								<!-- Work Section -->
-								<div id="work" style="margin-top: 3rem;">
-									<header style="text-align: center;">
-										<h2 class="blur-text">Featured Work<span class="blinking-cursor">|</span></h2>
-									</header>
-									<section style="max-width: 1200px; margin: 0 auto;">
-										<!-- SHUTTLEFALL -->
-										<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
-											<div style="flex: 0 0 500px;">
-												<a href="#work1"><img src="images/day1SHUTTLEFALL.gif" alt="" style="width: 100%; height: auto; display: block;"></a>
-												<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;"><i>SHUTTLEFALL</i></p>
-											</div>
-											<div style="flex: 1; margin-top: 4rem;">
-												<p>Aliens, corrupt business practices, and a <i>massive</i> drill.</p>
-											</div>
-										</div>
+				<!-- Home: name, title, and project index -->
+				<article id="home" class="panel intro">
+					<header>
+						<h1 class="blur-text">TayLee Young<span class="blinking-cursor">|</span></h1>
+						<p>Systems Programmer and Technical Game Designer</p>
+						<pre id="ascii-art-container"></pre>
+					</header>
 
-										<!-- Moth 2: The Mothening -->
-										<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
-											<div style="flex: 0 0 500px;">
-												<a href="#work2"><img src="images/mothTitleScreen.gif" alt="" style="width: 110%; height: auto; display: block;"></a>
-												<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;"><i>Moth 2: The Mothening</i></p>
-											</div>
-											<div style="flex: 1; margin-top: 4rem;">
-												<p>From fluttering wings to fortune — grow your moth empire!</p>
-											</div>
-										</div>
+					<section style="max-width: 1200px; margin: 2rem auto 0;">
+						<header style="text-align: center;">
+							<h2 class="blur-text">Featured Work<span class="blinking-cursor">|</span></h2>
+						</header>
 
-										<!-- Refraction -->
-										<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
-											<div style="flex: 0 0 500px;">
-												<a href="#work3"><img src="images/refractionTitleScreen.gif" alt="" style="width: 110%; height: auto; display: block;"></a>
-												<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;"><i>Refraction</i></p>
-											</div>
-											<div style="flex: 1; margin-top: 4rem;">
-												<p>A custom engine running CPU-based pixel-by-pixel light calculations? How hard can that be?</p>
-											</div>
-										</div>
+						<!-- SHUTTLEFALL -->
+						<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
+							<div style="flex: 0 0 500px;">
+								<a href="#shuttlefall">
+									<img src="images/day1SHUTTLEFALL.gif" alt="SHUTTLEFALL preview" style="width: 100%; height: auto; display: block;">
+								</a>
+								<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;">
+									<a href="#shuttlefall" style="text-decoration: none; color: inherit;"><i>SHUTTLEFALL</i></a>
+								</p>
+							</div>
+							<div style="flex: 1; margin-top: 4rem;">
+								<p>Aliens, corrupt business practices, and a <i>massive</i> drill.</p>
+							</div>
+						</div>
 
-										<!-- Procedurally Generated Dungeon -->
-										<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
-											<div style="flex: 0 0 500px;">
-												<a href="#work4"><img src="images/PDthumbnail.png" alt="" style="width: 75%; height: auto; display: block;"></a>
-												<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;"><i>Procedurally Generated Dungeon</i></p>
-											</div>
-											<div style="flex: 1; margin-top: 4rem;">
-												<p>What happens when you try to design a playable level using entirely procedurally generated layouts?</p>
-											</div>
-										</div>
-									</section>
-								</div>
-							</article>
+						<!-- Moth 2: The Mothening -->
+						<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
+							<div style="flex: 0 0 500px;">
+								<a href="#moth2">
+									<img src="images/mothTitleScreen.gif" alt="Moth 2: The Mothening preview" style="width: 110%; height: auto; display: block;">
+								</a>
+								<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;">
+									<a href="#moth2" style="text-decoration: none; color: inherit;"><i>Moth 2: The Mothening</i></a>
+								</p>
+							</div>
+							<div style="flex: 1; margin-top: 4rem;">
+								<p>From fluttering wings to fortune — grow your moth empire!</p>
+							</div>
+						</div>
 
-							<style>
-								figure {
-									text-align: center;
-								}
-							
-								figcaption {
-									text-align: center;
-								}
-							</style>
-						<!-- Work 1 -->
-							<article id="work2" class="panel">
-								<header>
-									<h2><i>Moth 2: The Mothening</i></h2>
-								</header>
-								<p>
-									On an alien planet, moths grow to be 5x the size of the ones we find on Earth. They are cute, cuddly, and worth quite the price. You set up a base on this planet, creating a greenhouse as your base of operations. Alone on the planet, you seek to catch, breed, and sell moths all to become a monopoly. 
+						<!-- Refraction -->
+						<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
+							<div style="flex: 0 0 500px;">
+								<a href="#refraction">
+									<img src="images/refractionTitleScreen.gif" alt="Refraction preview" style="width: 110%; height: auto; display: block;">
+								</a>
+								<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;">
+									<a href="#refraction" style="text-decoration: none; color: inherit;"><i>Refraction</i></a>
+								</p>
+							</div>
+							<div style="flex: 1; margin-top: 4rem;">
+								<p>A custom engine running CPU-based pixel-by-pixel light calculations? How hard can that be?</p>
+							</div>
+						</div>
+
+						<!-- Procedurally Generated Dungeon -->
+						<div style="display: flex; gap: 15rem; margin-bottom: 4rem; align-items: flex-start;">
+							<div style="flex: 0 0 500px;">
+								<a href="#dungeon">
+									<img src="images/PDthumbnail.png" alt="Procedurally Generated Dungeon preview" style="width: 75%; height: auto; display: block;">
+								</a>
+								<p style="margin-top: 1rem; font-weight: bold; font-size: 1.2em; text-align: center;">
+									<a href="#dungeon" style="text-decoration: none; color: inherit;"><i>Procedurally Generated Dungeon</i></a>
+								</p>
+							</div>
+							<div style="flex: 1; margin-top: 4rem;">
+								<p>What happens when you try to design a playable level using entirely procedurally generated layouts?</p>
+							</div>
+						</div>
+
+					</section>
+				</article>
+
+				<!-- Project: SHUTTLEFALL -->
+				<article id="shuttlefall" class="panel">
+					<header>
+						<h2>SHUTTLEFALL</h2>
+					</header>
+					<p>
+						With the grip of a powerful corporation around your neck, demanding you mine resources for their profit and to relieve your debt, 
+									you must land your ship on an alien planet and drill deep down, careful to not make too much noise. Will you ever, truly, be free?
+									<br>
+									<div class="gallery">
+										<a href="#pic05" class="thumbnail"><img src="images/shakeSHUTTLEFALL.gif" alt="The descent."></a>
+									</div>
+									<br>
+									This is one of my more recent student projects that I am currently apart of. I joined fairly recently, yet I already am working towards
+									goals that push me as a programmer. I am immensely grateful that my name is becoming known amongst my peers, as it didn't take long for me to find 
+									a team and be hired, let alone be given an opportunity to design and immediately start work on this project. Thanks to my work on the previous projects,
+									I had an idea on how to navigate and integrate some new systems into the game. 
+									<br>
+									As I am still fairly new to this team, I don't have much work. However, I have some plans I can share!
+									<br>
+									To begin, even prior to officially being hired, I had pitched some ideas to the team, which we worked off of. My first task was to create a
+									sort of "level" system. Now, to be clear -- levels don't actually exist. As the player will always be on the ship, there isn't too much
+									of a change of scenery in the way one would expect with "levels". Rather, there are days. The player must reach a specific quota amount
+									to advance to the next day. 
+									<br>
+									My goal was to make this mechanic more interesting. Each day, a weather event has a chance to occur. This weather is more of a wrapper for 
+									a set of modifiers that affect the player's day. For example, when it is rainy, the alien is more aggressive, the drill overheats at a lower
+									rate, and the quota may be slightly higher. Or, alternatively, if it is a heatwave, the alien is less aggressive, the drill overheats much 
+									faster, and the quota is also higher. Depending on the "difficulty" of these conditions, the player can get a higher paycheck at the end of the
+									day, which can be used to upgrade the ship, buy new addons, or even pay off the debt. 
+									<br>
+									<img src="images/sunnyScreenGif.gif" alt="A sunny day."></a>
+									<br>
+									<br>
+									<img src="images/rainyScreenGif.gif" alt="A rainy day."></a>
+									<br>
+									This largely has been implemented, though with playtesting, we will be experimenting on more dynamics. I purposely programmed the system
+									to be easily modifiable, as well as incredibly simple to add more modifications to nearly anything we want. While there are really only 
+									three factors that get modified, it could be expanded to include more, such as faster/slower repair speed, slower/faster drill speed, 
+									a faster/slower alien, etc. We also are considering allowing the player to choose where they will land on the planet, with each location
+									having different weather events, encouraging the player to pick and choose where they want to go while also allowing them to play
+									at their own difficulty. 
+									<br>
+									We plan on expanding this with time, but also are seeking to add more systems that could integrate this more. Maybe upgrades that allow
+									the player to "encourage" certain weather events, or cassettes (tools that the player can buy that will add more permanent modifiers) that 
+									could reuse these modifications. 
+									<br>
+									I am deeply excited to continue working on this project, as not only has this been a great learning and teaching experience, but it also
+									is simply so much fun to work on. The team values my input, upholds my wishes of creating a game that is inclusive for most players, 
+									and is always open to new ideas. I am grateful for this opportunity and I am excited to see where this project goes!
+
+					</p>
+				</article>
+
+				<!-- Project: Moth 2: The Mothening -->
+				<article id="moth2" class="panel">
+					<header>
+						<h2><i>Moth 2: The Mothening</i></h2>
+					</header>
+					<p>
+						On an alien planet, moths grow to be 5x the size of the ones we find on Earth. They are cute, cuddly, and worth quite the price. You set up a base on this planet, creating a greenhouse as your base of operations. Alone on the planet, you seek to catch, breed, and sell moths all to become a monopoly. 
 									<br>
 									It's hard to sell these guys with how cute they are though...
 									<br>
@@ -167,16 +218,16 @@ game itself aided in this as well.
 									<br>
 									<h2> End Result </h2>
 									In the end, the project has been an incredible experience. While every project that I have worked on — big or small — always lets me expand my knowledge and experiment, this project is arguably the most relevant to me. It was the first time I was able to work on a project with such important roles, and it was also the definitive reason I enjoyed systems programming. I had an interest in it before but had yet to dive into it. This project was the perfect opportunity to do so, and I ran with it. With how interconnected and complex every system was, I was able to learn so much about how to design, implement, and maintain systems while balancing my other tasks as well. My leadership skills have also improved — while it wasn't the first time I had taken a role similar to it, this pushed what I already knew and proved there is always time for improvement. 
-								</p>
-							</article>
+					</p>
+				</article>
 
-						<!-- Work 2 -->
-							<article id="work3" class="panel">
-								<header>
-									<h1><i>Refraction</i></h1>
-								</header>
-								<p>
-									You find yourself lost in the depths of a dungeon. It's dark, damp, and cramped. Equipped with a solitary light, you venture forward, discovering large crystals that can shift and redirect light beams. Soon, it dawns on you — manipulating these beams unlocks pathways, each puzzle leading closer to an escape. 
+				<!-- Project: Refraction -->
+				<article id="refraction" class="panel">
+					<header>
+						<h2><i>Refraction</i></h2>
+					</header>
+					<p>
+						You find yourself lost in the depths of a dungeon. It's dark, damp, and cramped. Equipped with a solitary light, you venture forward, discovering large crystals that can shift and redirect light beams. Soon, it dawns on you — manipulating these beams unlocks pathways, each puzzle leading closer to an escape. 
 									<br>
 									This student project was one of the first of my serious team-based projects. Having worked on some smaller projects before with fewer people, I had an idea of how it would go, ready for the challenges ahead, but it was a pivotal point in my learning. 
 									<br>
@@ -654,17 +705,16 @@ if (ImGui::TreeNode("Import:"))
 								</section>
 								In the end, our team produced a functional, engaging puzzle game with dynamic lighting, handcrafted visuals, and satisfying gameplay. The experience taught me as much about teamwork and project management as it did about technical skills.
 								From handling conflicts in code and within the team to finding creative solutions under pressure, this project laid the foundation for my future growth as a developer. To this day, I'm grateful for the challenges and lessons of this project. It wasn't perfect — far from it — but it was a pivotal experience in my journey as a programmer and game designer. The experience reinforced my passion for game development and systems programming, and I carry the lessons with every project!
+					</p>
+				</article>
 
-								</p>
-							</article>
-
-						<!-- Work 3 -->
-							<article id="work4" class="panel">
-								<header>
-									<h2>Procedurally Generated Dungeon</h2>
-								</header>
-								<p>
-									What happens, as a game designer, when you attempt to create a level whose layout is completely procedurally generated?
+				<!-- Project: Procedurally Generated Dungeon -->
+				<article id="dungeon" class="panel">
+					<header>
+						<h2>Procedurally Generated Dungeon</h2>
+					</header>
+					<p>
+						What happens, as a game designer, when you attempt to create a level whose layout is completely procedurally generated?
 									This project set out to test this concept by designing a dungeon crawler where no two playthroughs were the same. 
 									The player would navigate a maze-like environment, defeat enemies, collect powerups, and kill the big-bad boss -- all while
 									traversing a dynamically generated level. 
@@ -1021,97 +1071,45 @@ void ApplyBossBuffs(WeaponLogic weapon)
 									<br>
 									Overall this project gave me valuable insights into game systems design, algorithmic level generation, and gameplay balancing,
 									skills that will, as always, be invaluable in my future projects!
-								</p>
-							</article>
 
-						<!-- Work 4 -->
-							<article id="work1" class="panel">
-								<header>
-									<h2>SHUTTLEFALL</h2>
-								</header>
-								<p>
-									With the grip of a powerful corporation around your neck, demanding you mine resources for their profit and to relieve your debt, 
-									you must land your ship on an alien planet and drill deep down, careful to not make too much noise. Will you ever, truly, be free?
-									<br>
-									<div class="gallery">
-										<a href="#pic05" class="thumbnail"><img src="images/shakeSHUTTLEFALL.gif" alt="The descent."></a>
-									</div>
-									<br>
-									This is one of my more recent student projects that I am currently apart of. I joined fairly recently, yet I already am working towards
-									goals that push me as a programmer. I am immensely grateful that my name is becoming known amongst my peers, as it didn't take long for me to find 
-									a team and be hired, let alone be given an opportunity to design and immediately start work on this project. Thanks to my work on the previous projects,
-									I had an idea on how to navigate and integrate some new systems into the game. 
-									<br>
-									As I am still fairly new to this team, I don't have much work. However, I have some plans I can share!
-									<br>
-									To begin, even prior to officially being hired, I had pitched some ideas to the team, which we worked off of. My first task was to create a
-									sort of "level" system. Now, to be clear -- levels don't actually exist. As the player will always be on the ship, there isn't too much
-									of a change of scenery in the way one would expect with "levels". Rather, there are days. The player must reach a specific quota amount
-									to advance to the next day. 
-									<br>
-									My goal was to make this mechanic more interesting. Each day, a weather event has a chance to occur. This weather is more of a wrapper for 
-									a set of modifiers that affect the player's day. For example, when it is rainy, the alien is more aggressive, the drill overheats at a lower
-									rate, and the quota may be slightly higher. Or, alternatively, if it is a heatwave, the alien is less aggressive, the drill overheats much 
-									faster, and the quota is also higher. Depending on the "difficulty" of these conditions, the player can get a higher paycheck at the end of the
-									day, which can be used to upgrade the ship, buy new addons, or even pay off the debt. 
-									<br>
-									<img src="images/sunnyScreenGif.gif" alt="A sunny day."></a>
-									<br>
-									<br>
-									<img src="images/rainyScreenGif.gif" alt="A rainy day."></a>
-									<br>
-									This largely has been implemented, though with playtesting, we will be experimenting on more dynamics. I purposely programmed the system
-									to be easily modifiable, as well as incredibly simple to add more modifications to nearly anything we want. While there are really only 
-									three factors that get modified, it could be expanded to include more, such as faster/slower repair speed, slower/faster drill speed, 
-									a faster/slower alien, etc. We also are considering allowing the player to choose where they will land on the planet, with each location
-									having different weather events, encouraging the player to pick and choose where they want to go while also allowing them to play
-									at their own difficulty. 
-									<br>
-									We plan on expanding this with time, but also are seeking to add more systems that could integrate this more. Maybe upgrades that allow
-									the player to "encourage" certain weather events, or cassettes (tools that the player can buy that will add more permanent modifiers) that 
-									could reuse these modifications. 
-									<br>
-									I am deeply excited to continue working on this project, as not only has this been a great learning and teaching experience, but it also
-									is simply so much fun to work on. The team values my input, upholds my wishes of creating a game that is inclusive for most players, 
-									and is always open to new ideas. I am grateful for this opportunity and I am excited to see where this project goes!
-								</p>
-							</article>
-						<!-- Contact -->
-							<article id="contact" class="panel">
-								<header>
-									<h2 class="blur-text">Contact Me!<span class="blinking-cursor">|</span></h2>
-								</header>
-								<form action="https://formspree.io/f/mdkakyod" method="post">
-									<div>
-										<div class="row">
-											<div class="col-6 col-12-medium">
-												<input type="text" name="name" placeholder="Name" />
-											</div>
-											<div class="col-6 col-12-medium">
-												<input type="email" name="email" placeholder="Email" />
-											</div>
-											<div class="col-12">
-												<input type="text" name="subject" placeholder="Subject" />
-											</div>
-											<div class="col-12">
-												<textarea name="message" placeholder="Message" rows="6"></textarea>
-											</div>
-											<div class="col-12">
-												<input type="submit" value="Send Message" />
-											</div>
-										</div>
-									</div>
-								</form>
-							</article>
+					</p>
+				</article>
 
-						<!-- About Me -->
-							<article id="about-me" class="panel">
-								<header>
-									<h2 class="blur-text">About Me<span class="blinking-cursor">|</span></h2>
-								</header>
-								<p>
-									<!-- Add your text here -->
-									<br>
+				<!-- Contact -->
+				<article id="contact" class="panel">
+					<header>
+						<h2 class="blur-text">Contact Me!<span class="blinking-cursor">|</span></h2>
+					</header>
+					<form action="https://formspree.io/f/mdkakyod" method="post">
+						<div>
+							<div class="row">
+								<div class="col-6 col-12-medium">
+									<input type="text" name="name" placeholder="Name" />
+								</div>
+								<div class="col-6 col-12-medium">
+									<input type="email" name="email" placeholder="Email" />
+								</div>
+								<div class="col-12">
+									<input type="text" name="subject" placeholder="Subject" />
+								</div>
+								<div class="col-12">
+									<textarea name="message" placeholder="Message" rows="6"></textarea>
+								</div>
+								<div class="col-12">
+									<input type="submit" value="Send Message" />
+								</div>
+							</div>
+						</div>
+					</form>
+				</article>
+
+				<!-- About Me -->
+				<article id="about-me" class="panel">
+					<header>
+						<h2 class="blur-text">About Me<span class="blinking-cursor">|</span></h2>
+					</header>
+					<p>
+						<br>
 									<em> "The last frontier is the human mind and we are its pioneers." - Prey 2017 </em>
 									<br>
 									<br>
@@ -1151,53 +1149,27 @@ void ApplyBossBuffs(WeaponLogic weapon)
 									Currently, I am apart of team ADMIS, working on a student project about a corrupt corporation,
 									aliens, and a big beefy drill. Feel free to read about that too!
 									I am looking for internships and job opportunities, so feel free to contact me anytime!
-								</p>
-							</article>
+					</p>
+				</article>
 
-					</div>
+			</div><!-- /#main -->
 
-				<!-- Footer -->
-					<div id="footer">
-						<ul class="copyright">
-							<li>&copy; TayLee Young.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a><span class="blinking-cursor">|</span></li>
-						</ul>
-					</div>
-
+			<!-- Footer -->
+			<div id="footer">
+				<ul class="copyright">
+					<li>&copy; 2025 TayLee Young</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a><span class="blinking-cursor">|</span></li>
+				</ul>
 			</div>
 
+		</div><!-- /#wrapper -->
+
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
-				document.addEventListener('DOMContentLoaded', function() {
-					let index = 0;
-					const speed = 0.5; // typing speed in milliseconds
-		
-					function typeWriter() {
-						if (index < text.length) {
-							document.getElementById("typed-text").innerHTML += text.charAt(index);
-							index++;
-							setTimeout(typeWriter, speed);
-						}
-					}
-		
-					typeWriter();
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
-					let terminalIndex = 0;
-
-					function typeTerminal() {
-						if (terminalIndex < terminalText.length) {
-							document.getElementById("terminal-text").innerHTML += terminalText.charAt(terminalIndex) === '\n' ? '<br>' : terminalText.charAt(terminalIndex);
-							terminalIndex++;
-							setTimeout(typeTerminal, speed);
-						}
-					}
-
-					typeTerminal();
-				});
-			</script>
 	</body>
 </html>
