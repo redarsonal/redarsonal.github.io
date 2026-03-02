@@ -214,6 +214,143 @@
 		}
 	});
 
+	// Terminal background effect: types randomized terminal-style commands into a fixed
+	// background layer, character by character, then clears and repeats indefinitely.
+	// The text color is set just barely above the background so it reads as ambient
+	// texture rather than competing with foreground content.
+	(function() {
+		var lines = [
+			'> initializing...',
+			'> loading assets...',
+			'> checking dependencies...',
+			'> all systems nominal',
+			'$ ls -la projects/\ndrwxr-xr-x  shuttlefall/\ndrwxr-xr-x  moth2/\ndrwxr-xr-x  refraction/\ndrwxr-xr-x  procedural dungeon/',
+			'$ git log --oneline',
+			'a1f3c9e  fix: panel height transition bug',
+			'c74aa12  refactor: clean up util.js',
+			'$ ping localhost',
+			'64 bytes from 127.0.0.1: icmp_seq=1 ttl=64',
+			'64 bytes from 127.0.0.1: icmp_seq=2 ttl=64',
+			'$ whoami\n> systems_programmer',
+			'> many days, many bugs...',
+			'$ find . -name "*.bug" -delete',
+			'> no bugs found (suspicious)',
+			'> help, im trapped in this terminal!',
+			'$ npm run dev',
+			'> compiled successfully in 142ms',
+			'$ grep -r "TODO" src/',
+			'> main.js:47: TODO: rewrite entire codebase\n> (just kidding)',
+			'$ ./run_game.sh',
+			'> loading world...',
+			'> entities spawned: 312',
+			'> ready.',
+			'> cd top_secret/',
+			'> weather unknown: you are inside',
+			'> everything is fine\n> (it is not fine)',
+			'> 1 file changed, 214 insertions(+), 1 deletion(-)',
+			'> found 2 zombie processes.\n> left them alone out of respect',
+			'> warning: you should know better',
+			'> model name: fast enough, probably',
+			'> vim (not a cry for help)',
+			'> echo "hello world"',
+			'> last reboot: because something broke',
+			'$ diff old_code.js new_code.js \n> its the same code.\n> you added a comment.',
+			'$ touch grass.txt\n> created.\n> reminder set for: eventually',
+			'> alain spawned...',
+			'> drill shuttoff initalized.',
+			'> Quota met, SHUTTLEFALL initiated.',
+			'> Anyone seen Nick?',
+			'$ systemctl restart everything ',
+			'$ kill -9 1337',
+			'$ git stash pop',
+			'$ git pull origin main',
+			'$ git init',
+			'$ unzip assets.zip -d assets/',
+			'$ ./please_work.sh',
+			'$ !!',
+			'$ echo $?',
+			'> Michael, the moths are broken again...',
+			'$ uptime -p\n> up 3 weeks, 2 days, 14 hours',
+			'> running 10 iterations...\n> avg: 4.7ms\n> peak: 4.8ms\n> worst: 312ms  <-- what happened here',
+			'> you are doing science.',
+			'> If the laws of physics no longer apply in the future, God help you.',
+			'$ ping space\n> space.\n> spaaaacee.',
+			'> - removed herobrine',
+			'> spruce wood is better than oak wood',
+			'> - removed herobrine',
+			'> DETERMINATION',
+			'> despite everything, it is still you.',
+			'$ ./reset.sh',
+			'> - removed herobrine',
+			'> anonymous user connected.\n> no messages exchanged.\n> reached summit together.\n> anonymous user disconnected.',
+			'> drwxr-xr-x  golden_wasteland/',
+			'> returning to the sky.',
+			'> winged light found: 3',
+			'> spirit is showing you something.',
+			'> drwxr-xr-x  eye_of_eden/',
+			'$ @echo "Hello?"\n> [Turret]: Hello.',
+			'> This next test may involve trace amounts of time travel. So, word of advice: If you meet yourself on the testing track, dont make eye contact.',
+			'$ playmusic.exe\n> playing: "Aria Math" by C418',
+			'$ playmusic.exe\n> playing: "Excuse" by C418',
+			'$ playmusic.exe\n> playing: "End of Small Sanctuary" by Akira Yamaoka',	
+			'$ playmusic.exe\n> playing: "Theme of Laura" by Akira Yamaoka',
+			'$ playmusic.exe\n> playing: "End of Small Sanctuary" by Akira Yamaoka',	
+			'$ playmusic.exe\n> playing: "Rainy Day" by Alec Holowka',	
+		];
+
+		// Create the container and pre element.
+		var container = document.createElement('div');
+		container.id = 'terminal-bg';
+		var pre = document.createElement('pre');
+		container.appendChild(pre);
+		document.body.insertBefore(container, document.body.firstChild);
+
+		var displayed = '';   // Full text currently shown
+		var lineIdx   = 0;    // Which line we're typing
+		var charIdx   = 0;    // Which character within the line
+		var paused    = false;
+
+		// Shuffle lines so the order feels organic each visit.
+		lines = lines.slice().sort(function() { return Math.random() - 0.5; });
+
+		function typeChar() {
+			if (paused) return;
+
+			var line = lines[lineIdx];
+
+			if (charIdx < line.length) {
+				// Still typing the current line.
+				displayed += line.charAt(charIdx);
+				charIdx++;
+				pre.textContent = displayed;
+				setTimeout(typeChar, Math.random() * 30 + 20); // 20–50ms per char
+			} else {
+				// Finished the line — pause, add newline, move to next.
+				displayed += '\n';
+				charIdx = 0;
+				lineIdx = (lineIdx + 1) % lines.length;
+
+				// When we loop back to the start, clear the screen after a pause.
+				if (lineIdx === 0) {
+					paused = true;
+					setTimeout(function() {
+						displayed = '';
+						pre.textContent = '';
+						paused = false;
+						lines = lines.slice().sort(function() { return Math.random() - 0.5; });
+						setTimeout(typeChar, 400);
+					}, 2500);
+				} else {
+					setTimeout(typeChar, Math.random() * 200 + 100); // pause between lines
+				}
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+			setTimeout(typeChar, 300); // slight delay before starting
+		});
+	})();
+
 	// CRT scanline effect: creates a single animated line that loops at a random interval.
 	function createCrtLine() {
 		var crtLine = document.createElement('div');

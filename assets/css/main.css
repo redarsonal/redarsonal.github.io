@@ -1314,11 +1314,11 @@ input, select, textarea {
 	}
 
 	body {
-		background-image: url("images/overlay.png"), url("images/bg.jpg");
-		background-repeat: repeat, no-repeat;
-		background-size: auto, 100% 100%;
-		background-attachment: fixed;
-		overflow-y: scroll;
+    background-image: url("images/overlay.png");
+    background-repeat: repeat;
+    background-color: rgb(15, 15, 15);
+    background-attachment: fixed;
+    overflow-y: scroll;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -1847,7 +1847,7 @@ body::before {
 	transform: translateX(-50%);
 	width: 100%;
 	max-width: 80em;
-	background: rgba(13, 31, 34, 0.9);
+	background: rgb(15, 15, 15);
 	z-index: 1000;
 	padding: 0.5em 0;
 	border-bottom: 2px solid #d0f0c0; /* Thin line at the bottom */
@@ -1883,6 +1883,8 @@ body::before {
 	#wrapper {
 		width: 45em;
 		margin: 0 auto;
+		position: relative;
+		z-index: 1;
 		min-height: 100vh;
 		max-width: 100%;
 		padding: 4em 0;
@@ -2414,4 +2416,36 @@ pre, pre code {
     padding: 1em;                                     /* Optional: Padding for better spacing */
     border: 1px solid #ccc;                           /* Optional: Border to frame the code */
     overflow-x: auto;                                 /* Ensure horizontal scrolling if needed */
+}
+
+#terminal-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 600%;
+	height: 600%;
+	pointer-events: none;    /* fully click-through */
+	z-index: 0;              /* behind everything */
+	overflow: hidden;
+	padding: 2em;
+	box-sizing: border-box;
+}
+
+#terminal-bg pre {
+	display: block !important;
+	background: transparent !important;
+	background-color: transparent !important;
+	border: none !important;
+	border-radius: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 13px !important;
+	line-height: 1.6em;
+	color: rgba(66, 139, 79, 0.17) !important;   /* barely lighter than rgb(15,15,15) */
+	text-shadow: none !important;
+	text-align: left !important;
+	white-space: pre !important;
+	overflow: visible !important;
+	width: 600%;
 }
