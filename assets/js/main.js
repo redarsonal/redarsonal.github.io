@@ -254,13 +254,13 @@
 			'> vim (not a cry for help)',
 			'> echo "hello world"',
 			'> last reboot: because something broke',
-			'$ diff old_code.js new_code.js \n> its the same code.\n> you added a comment.',
+			'$ diff old_code.js new_code.js\n> its the same code.\n> you added a comment.',
 			'$ touch grass.txt\n> created.\n> reminder set for: eventually',
 			'> alain spawned...',
-			'> drill shuttoff initalized.',
+			'> drill shutoff initialized.',
 			'> Quota met, SHUTTLEFALL initiated.',
 			'> Anyone seen Nick?',
-			'$ systemctl restart everything ',
+			'$ systemctl restart everything',
 			'$ kill -9 1337',
 			'$ git stash pop',
 			'$ git pull origin main',
@@ -292,11 +292,38 @@
 			'> This next test may involve trace amounts of time travel. So, word of advice: If you meet yourself on the testing track, dont make eye contact.',
 			'$ playmusic.exe\n> playing: "Aria Math" by C418',
 			'$ playmusic.exe\n> playing: "Excuse" by C418',
-			'$ playmusic.exe\n> playing: "End of Small Sanctuary" by Akira Yamaoka',	
+			'$ playmusic.exe\n> playing: "End of Small Sanctuary" by Akira Yamaoka',
 			'$ playmusic.exe\n> playing: "Theme of Laura" by Akira Yamaoka',
-			'$ playmusic.exe\n> playing: "End of Small Sanctuary" by Akira Yamaoka',	
-			'$ playmusic.exe\n> playing: "Rainy Day" by Alec Holowka',	
+			'$ playmusic.exe\n> playing: "Rainy Day" by Alec Holowka',
+			'$ ratcatch.exe\n> - Position Updated: 4th Best Rat Catcher',
+			'> two pickles...',
+			'> snep detected, deploying pumpkins.',
+			'$ pet.exe\n> penny and honey say hi!',
+			'$ systemctl status dangerzone\n> dangerzone.service - The Danger Zone\n>    Loaded: loaded (/etc/systemd/system/dangerzone.service; enabled)\n>    Active: active (running) since yesterday; 23h ago\n> Main PID: 1337 (shuttlefall)\n>    Tasks: 42 (limit: 4915)\n>    Memory: 256M\n>    CGroup: /system.slice/dangerzone.service\n>            └─1337 /usr/bin/shuttlefall',
+			'> administering neurotoxin',
+			'$ sudo apt update',
+			'$ sudo apt upgrade',
+			'$ sudo reboot',
+			'> connection lost...\n> attempting to reconnect...\n> connection re-established.',
+			'$ cowspeak.exe\n> moo.',
+			'$ sudo rm -rf / --no-preserve-root\n> just kidding, dont do that.',
 		];
+
+		// Fisher-Yates shuffle: guarantees a uniformly random ordering.
+		// sort(() => Math.random() - 0.5) is statistically biased because
+		// the sort algorithm doesn't compare every pair — some orderings end
+		// up far more likely than others. Fisher-Yates avoids this entirely.
+		function shuffle(arr) {
+			var i = arr.length, j, tmp;
+			while (i > 0) {
+				j      = Math.floor(Math.random() * i);
+				i     -= 1;
+				tmp    = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+			return arr;
+		}
 
 		// Create the container and pre element.
 		var container = document.createElement('div');
@@ -310,8 +337,8 @@
 		var charIdx   = 0;    // Which character within the line
 		var paused    = false;
 
-		// Shuffle lines so the order feels organic each visit.
-		lines = lines.slice().sort(function() { return Math.random() - 0.5; });
+		// Initial shuffle.
+		lines = shuffle(lines.slice());
 
 		function typeChar() {
 			if (paused) return;
@@ -330,14 +357,14 @@
 				charIdx = 0;
 				lineIdx = (lineIdx + 1) % lines.length;
 
-				// When we loop back to the start, clear the screen after a pause.
+				// When we loop back to the start, clear and reshuffle.
 				if (lineIdx === 0) {
 					paused = true;
 					setTimeout(function() {
 						displayed = '';
 						pre.textContent = '';
 						paused = false;
-						lines = lines.slice().sort(function() { return Math.random() - 0.5; });
+						lines = shuffle(lines.slice()); // reshuffle on reset
 						setTimeout(typeChar, 400);
 					}, 2500);
 				} else {
